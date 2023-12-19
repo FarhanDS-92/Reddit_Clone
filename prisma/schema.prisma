@@ -26,6 +26,7 @@ model Post {
   title       String?
   message     String
   userId      String
+  createdAt   DateTime  @default(now())
   parent      Post?     @relation("Post", fields: [parentId], references: [id])
   children    Post[]    @relation("Post")
   parentId    String?

@@ -5,7 +5,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <NavBar />
+        <header>
+          <NavBar />
+        </header>
         {children}
       </body>
     </html>

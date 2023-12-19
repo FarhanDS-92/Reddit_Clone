@@ -1,3 +1,7 @@
 export default function Logout() {
-  return <p>Logout</p>;
+  return (
+    <main>
+      <p>Logout</p>
+    </main>
+  );
 }
