@@ -27,28 +27,28 @@ model Post {
   message     String
   userId      String
   createdAt   DateTime  @default(now())
-  parent      Post?     @relation("Post", fields: [parentId], references: [id])
+  parent      Post?     @relation("Post", fields: [parentId], references: [id], onDelete: Cascade)
   children    Post[]    @relation("Post")
   parentId    String?
-  user        User      @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   votes       Vote[]
-  SubReddit   SubReddit @relation(fields: [subRedditId], references: [id])
+  SubReddit   SubReddit @relation(fields: [subRedditId], references: [id], onDelete: Cascade)
   subRedditId String
 }
 
 model SubReddit {
   id     String @id @default(uuid())
   name   String
-  User   User   @relation(fields: [userId], references: [id])
+  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
   post   Post[]
 }
 
 model Vote {
   id       String  @id @default(uuid())
-  User     User    @relation(fields: [userId], references: [id])
+  User     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId   String
-  Post     Post    @relation(fields: [postId], references: [id])
+  Post     Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId   String
   isUpvote Boolean
 }
