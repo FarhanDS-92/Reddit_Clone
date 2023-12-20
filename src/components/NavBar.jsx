@@ -1,4 +1,5 @@
 import Link from "next/link.js";
+import { FaHome } from "react-icons/fa";
 
 export default function NavBar() {
   return (
@@ -20,7 +21,9 @@ export default function NavBar() {
         </li>
 
         <li>
-          <Link href={"/subreddits"}>Subreddits</Link>
+          <Link href={"/"}>
+            <FaHome id="home" />
+          </Link>
         </li>
 
         <li id="search">
@@ -35,11 +38,11 @@ export default function NavBar() {
 
         <div id="auth">
           <li>
-            <Link href={"/login"}>Log In</Link>
+            <Link href={"/subreddits"}>Subreddits</Link>
           </li>
 
           <li>
-            <Link href={"/signup"}>Sign Up</Link>
+            <Link href={"/login"}>Log In</Link>
           </li>
 
           <li>

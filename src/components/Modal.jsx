@@ -1,35 +1,73 @@
-"use client";
-import { useEffect, useRef } from "react";
-import { useSearchParams, useRouter } from "next/navigation.js";
+// --------------------------------------------------------------------------------Modal Code
 
-export default function Modal({ isOpen, onClose, children }) {
-  const router = useRouter();
-  const dialogRef = useRef(null);
-  const searchParams = useSearchParams();
+// "use client";
+// import { useEffect, useRef } from "react";
+// import { useSearchParams, useRouter } from "next/navigation.js";
 
-  useEffect(() => {
-    const query = new URLSearchParams(searchParams);
-    const showDialog = query.get("showDialog");
+// export default function Modal({ isOpen, onClose, children }) {
+//   const router = useRouter();
+//   const dialogRef = useRef(null);
+//   const searchParams = useSearchParams();
 
-    if (showDialog === "true") {
-      dialogRef.current.showModal();
-    } else {
-      dialogRef.current.close();
-    }
-  }, [isOpen, searchParams]);
+//   useEffect(() => {
+//     const query = new URLSearchParams(searchParams);
+//     const showDialog = query.get("showDialog");
 
-  const handleClose = () => {
-    onClose && onClose();
-    router.push("/");
-  };
+//     if (showDialog === "true") {
+//       dialogRef.current.showModal();
+//     } else {
+//       dialogRef.current.close();
+//     }
+//   }, [isOpen, searchParams]);
 
-  return (
-    <dialog ref={dialogRef} onClose={handleClose}>
-      {children}
-      <button onClick={handleClose}>Close</button>
-    </dialog>
-  );
-}
+//   const handleClose = () => {
+//     onClose && onClose();
+//     router.push("/");
+//   };
+
+//   return (
+//     <dialog ref={dialogRef} onClose={handleClose}>
+//       {children}
+//       <button onClick={handleClose}>Close</button>
+//     </dialog>
+//   );
+// }
+
+// -------------------------------------------------------------------------------Login Code
+
+// "use client";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation.js";
+// import Modal from "@/components/Modal.jsx";
+
+// export default function Login() {
+//   const router = useRouter();
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   useEffect(() => {
+//     const shouldOpenModal = true;
+
+//     if (shouldOpenModal) {
+//       setIsModalOpen(true);
+//       router.replace("/login?showDialog=true");
+//     }
+//   }, []);
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+//   return (
+//     <section>
+//       <Modal isOpen={isModalOpen} onClose={closeModal}>
+//         <h2>Modal Content</h2>
+//         <p>Content</p>
+//       </Modal>
+//     </section>
+//   );
+// }
+
+// ------------------------------------------------------------------------------------------testing
 
 // testing
 // "use client";

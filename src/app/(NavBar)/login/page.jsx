@@ -1,31 +1,26 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation.js";
-import Modal from "@/components/Modal.jsx";
+import Link from "next/link.js";
 
 export default function Login() {
-  const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const shouldOpenModal = true;
-
-    if (shouldOpenModal) {
-      setIsModalOpen(true);
-      router.replace("/login?showDialog=true");
-    }
-  }, []);
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
-    <main>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h2>Modal Content</h2>
-        <p>Content</p>
-      </Modal>
-    </main>
+    <section id="login">
+      <form id="loginForm">
+        <h1>Welcome Back!</h1>
+        <div id="login-username">
+          <label>Username</label>
+          <input type="text" />
+        </div>
+        <div id="login-password">
+          <label>Password</label>
+          <input type="password" />
+        </div>
+        <button>Login</button>
+      </form>
+      <div id="login-register">
+        <p>Don't have an account? Register Here:</p>
+        <button id="login-RegisterBtn">
+          <Link href={"/register"}>Register?</Link>
+        </button>
+      </div>
+    </section>
   );
 }

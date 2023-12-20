@@ -23,12 +23,19 @@ p {
 main {
   width: 90%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 
 
-/* ************************************************************* */
-/* Navbar Start*/
-/* ************************************************************* */
+/* 
+*************************************************************
+Navbar Start
+************************************************************* 
+*/
 
 
 
@@ -77,8 +84,13 @@ ul {
   fill: #FF4500;
 }
 
+#home {
+  color: black;
+  font-size: 40px;
+}
+
 #search {
-  width: 30%;
+  width: 40%;
   height: 100%;
 }
 
@@ -101,7 +113,7 @@ ul {
 
 
 #auth {
-  width: 30%;
+  width: 20%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -130,23 +142,106 @@ a:active {
   color: blue;
 }
 
-main {
-  margin-top: 30px;
+
+
+/* 
+*************************************************************
+Navbar End
+************************************************************* 
+*/
+
+/*
+************************************************************* 
+Log In Start
+ ************************************************************* 
+*/
+
+#login {
+  width: 500px;
+  max-width: 800px;
+  min-width: 300px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 20px 30px;
 }
 
-/* ************************************************************* */
-/* Navbar End*/
-/* ************************************************************* */
+#loginForm {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
 
-/* ************************************************************* */
-/* Log In Start*/
-/* ************************************************************* */
+#login-username {
+  display: flex;
+  flex-direction: column;
+}
 
+#login-password {
+  display: flex;
+  flex-direction: column;
+}
 
+#login-register {
+  display: flex;
+}
 
+/* 
+*************************************************************
+Log In End
+************************************************************* 
+*/
 
+/* 
+*************************************************************
+Sign Up Start
+************************************************************* 
+*/
 
+#register {
+  width: 500px;
+  max-width: 800px;
+  min-width: 300px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border-radius: 30px;
+  padding: 20px 30px;
+}
 
-/* ************************************************************* */
-/* Log In End*/
-/* ************************************************************* */
+#registerForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+#register-username {
+  display: flex;
+  flex-direction: column;
+}
+
+#register-password {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+*************************************************************
+Sign Up End
+************************************************************* 
+*/
