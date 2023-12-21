@@ -105,7 +105,7 @@ header {
   width: 20%;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 a {
@@ -145,9 +145,6 @@ Navbar End
 Hamburger Menu Start
 ************************************************************* 
 */
-
-
-
 #menuContainer {
   position: absolute;
   z-index: 3;
@@ -202,7 +199,6 @@ Hamburger Menu Start
   font-size: 40px;
 }
 
-
 /* 
 *************************************************************
 Hamburger Menu End
@@ -215,9 +211,9 @@ Log In Start
 */
 
 #login {
-  width: 500px;
-  max-width: 800px;
-  min-width: 300px;
+  width: 40%;
+  max-width: 500px;
+  min-width: 350px;
   height: 500px;
   background-color: white;
   display: flex;
@@ -228,9 +224,18 @@ Log In Start
   padding: 20px 30px;
 }
 
+.redditIcon {
+  font-size: 100px;
+  color: #FF4500;
+}
+
+.titleWelcome {
+  margin-bottom: 0;
+}
+
 #loginForm {
   width: 100%;
-  height: 90%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -238,18 +243,89 @@ Log In Start
   gap: 30px;
 }
 
-#login-username {
+.username {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-#login-password {
+.password {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+
+.loginInputs {
+  margin-top: 5px;
+  height: 30px;
+  width: 70%;
+  border: none;
+  border-radius: 9999999px;
+  background-color: lightgoldenrodyellow;
+  padding: 0px 10px;
+  text-align: center;
+  transition: 200ms ease-in;
+}
+
+.loginInputs:hover,
+.loginInputs:focus {
+  box-shadow: 0 0 5px black;
+  outline: none;
+}
+
+.btnLR {
+  margin-top: 5px;
+  height: 30px;
+  width: 70%;
+  border: none;
+  border-radius: 9999999px;
+  background-color: green;
+  padding: 0px 10px;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  transition: 200ms ease-in;
+}
+
+.btnLR:hover,
+.btnLR:focus {
+  box-shadow: 0 0 5px black;
+  outline: none;
+}
+
 
 #login-register {
   display: flex;
+}
+
+#login-register-styles {
+  text-decoration: underline;
+}
+
+#login-register-styles:link {
+  color: blue;
+}
+
+/* visited link */
+#login-register-styles:visited {
+  color: blue;
+}
+
+/* mouse over link */
+#login-register-styles:hover {
+  color: blue;
+}
+
+/* selected link */
+#login-register-styles:active {
+  color: blue;
+}
+
+
+#login-register-link {
+  margin-left: 10px;
 }
 
 /* 
@@ -264,22 +340,22 @@ Sign Up Start
 */
 
 #register {
-  width: 500px;
-  max-width: 800px;
-  min-width: 300px;
+  width: 40%;
+  max-width: 500px;
+  min-width: 350px;
   height: 500px;
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
   padding: 20px 30px;
 }
 
 #registerForm {
   width: 100%;
-  height: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -287,15 +363,11 @@ Sign Up Start
   gap: 30px;
 }
 
-#register-username {
-  display: flex;
-  flex-direction: column;
+#titleWelcomeMargin {
+  margin-bottom: 20px;
 }
 
-#register-password {
-  display: flex;
-  flex-direction: column;
-}
+
 
 /* 
 *************************************************************

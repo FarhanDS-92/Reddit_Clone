@@ -36,8 +36,7 @@ export default async function NavBar() {
             <Link href={"/login"}>Login</Link>
           </>
         )}
-
-        <Link href={"/logout"}>Logout</Link>
+        {user.id && <Link href={"/logout"}>Logout</Link>}
       </div>
 
       <div id="space"></div>

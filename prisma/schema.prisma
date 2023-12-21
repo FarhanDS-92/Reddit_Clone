@@ -37,11 +37,12 @@ model Post {
 }
 
 model SubReddit {
-  id     String @id @default(uuid())
-  name   String
-  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String
-  post   Post[]
+  id        String   @id @default(uuid())
+  name      String   @unique
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  post      Post[]
+  createdAt DateTime @default(now())
 }
 
 model Vote {

@@ -37,11 +37,13 @@ export default function HamburgerMenu({ checkUser }) {
             </div>
           )}
 
-          <div>
-            <Link href={"/logout"}>
-              <span className="fontColor">Logout</span>
-            </Link>
-          </div>
+          {checkUser && (
+            <div>
+              <Link href={"/logout"}>
+                <span className="fontColor">Logout</span>
+              </Link>
+            </div>
+          )}
         </nav>
       </aside>
     </div>

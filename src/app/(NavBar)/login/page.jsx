@@ -1,25 +1,35 @@
 import Link from "next/link.js";
+import { FaReddit } from "react-icons/fa";
 
 export default function Login() {
   return (
     <section id="login">
+      <FaReddit className="redditIcon" />
+      <h1 className="titleWelcome">Welcome Back!</h1>
+
       <form id="loginForm">
-        <h1>Welcome Back!</h1>
-        <div id="login-username">
+        <div className="username">
           <label>Username</label>
-          <input type="text" />
+          <input type="text" className="loginInputs" placeholder="username" />
         </div>
-        <div id="login-password">
+        <div className="password">
           <label>Password</label>
-          <input type="password" />
+          <input
+            type="password"
+            className="loginInputs"
+            placeholder="password"
+          />
         </div>
-        <button>Login</button>
+        <button className="btnLR">Login</button>
       </form>
+
       <div id="login-register">
-        <p>Don't have an account? Register Here: </p>
-        <button id="login-RegisterBtn">
-          <Link href={"/register"}>Register?</Link>
-        </button>
+        <p>
+          Don't have an account?
+          <Link href={"/register"} id="login-register-styles">
+            <span id="login-register-link">Register Here</span>
+          </Link>
+        </p>
       </div>
     </section>
   );
