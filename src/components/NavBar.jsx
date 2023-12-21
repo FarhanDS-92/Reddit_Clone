@@ -1,7 +1,11 @@
+import { fetchUser } from "@/lib/fetchUser.js";
 import Link from "next/link.js";
 import { FaHome } from "react-icons/fa";
+import HamburgerMenu from "./HamburgerMenu.jsx";
 
-export default function NavBar() {
+export default async function NavBar() {
+  const user = await fetchUser();
+
   return (
     <nav id="navigation">
       <Link href={"/"}>
@@ -27,43 +31,18 @@ export default function NavBar() {
 
       <div id="auth">
         <Link href={"/subreddits"}>Subreddits</Link>
-
-        <Link href={"/login"}>Login</Link>
+        {!user.id && (
+          <>
+            <Link href={"/login"}>Login</Link>
+          </>
+        )}
 
         <Link href={"/logout"}>Logout</Link>
       </div>
 
       <div id="space"></div>
 
-      <div id="menuContainer">
-        <label id="hamburger-menu">
-          <input type="checkbox" id="checked" />
-        </label>
-        <aside id="sideBar">
-          <nav id="menu">
-            <div>
-              <Link href={"/"}>
-                <FaHome id="homeMenu" />
-              </Link>
-            </div>
-            <div>
-              <Link href={"/subreddits"}>
-                <span className="fontColor">Subreddits</span>
-              </Link>
-            </div>
-            <div>
-              <Link href={"/login"}>
-                <span className="fontColor">Login</span>
-              </Link>
-            </div>
-            <div>
-              <Link href={"/logout"}>
-                <span className="fontColor">Logout</span>
-              </Link>
-            </div>
-          </nav>
-        </aside>
-      </div>
+      <HamburgerMenu checkUser={user.id} />
     </nav>
   );
 }

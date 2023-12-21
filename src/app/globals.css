@@ -1,14 +1,3 @@
-:root {
-  --bar-width: 40px;
-  --bar-height: 5px;
-  --hamburger-gap: 2px;
-  --foreground: #333;
-  --background: white;
-  --hamburger-margin: 22px;
-  --animation-timing: 200ms ease-in-out;
-  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
-}
-
 html {
   box-sizing: border-box;
 }
@@ -151,20 +140,19 @@ a:active {
 Navbar End
 ************************************************************* 
 */
-
-
-
-
 /* 
 *************************************************************
 Hamburger Menu Start
 ************************************************************* 
 */
+
+
+
 #menuContainer {
   position: absolute;
   z-index: 3;
-  top: var(--hamburger-margin);
-  right: var(--hamburger-margin);
+  top: 22px;
+  right: 0;
   display: none;
   flex-direction: column;
   align-items: flex-end;
@@ -172,65 +160,28 @@ Hamburger Menu Start
 }
 
 #hamburger-menu {
-  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  padding-right: 22px;
   display: flex;
   flex-direction: column;
-  gap: var(--hamburger-gap);
+  gap: 2px;
   width: max-content;
-  cursor: pointer;
 }
 
-#hamburger-menu::before,
-#hamburger-menu::after,
-#hamburger-menu input {
-  content: "";
-  width: var(--bar-width);
-  height: var(--bar-height);
-  background-color: var(--foreground);
-  border-radius: 99999px;
-  transform-origin: left center;
-  transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+.bar {
+  height: 5px;
+  width: 40px;
+  background-color: #333;
+  border-radius: 999999px;
 }
 
-
-#hamburger-menu input {
-  appearance: none;
-  padding: 0;
-  margin: 0;
-  outline: none;
-  pointer-events: none;
-}
-
-#hamburger-menu:has(input:checked)::before {
-  rotate: 45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / -2);
-}
-
-#hamburger-menu:has(input:checked)::after {
-  rotate: -45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / 2);
-}
-
-#hamburger-menu input:checked {
-  opacity: 0;
-  width: 0;
-}
 
 #sideBar {
-  transition: opacity var(--animation-timing);
-  opacity: 0;
-  margin-top: calc(var(--hamburger-margin) - 3px);
+  margin-top: 18px;
+  transition: opacity 200ms ease-in-out;
   padding: 0.5rem 2rem;
-  background-color: var(--background);
+  background-color: white;
   height: 300px;
 }
-
-#hamburger-menu:has(input:checked)+#sideBar {
-  opacity: 1;
-}
-
 
 #menu {
   height: 100%;
@@ -241,17 +192,15 @@ Hamburger Menu Start
 }
 
 .fontColor {
-  color: var(--foreground);
+  color: black;
   font-weight: 600;
 
 }
 
 #homeMenu {
-  color: var(--foreground);
+  color: black;
   font-size: 40px;
 }
-
-
 
 
 /* 
@@ -259,13 +208,6 @@ Hamburger Menu Start
 Hamburger Menu End
 ************************************************************* 
 */
-
-
-
-
-
-
-
 /*
 ************************************************************* 
 Log In Start
@@ -315,7 +257,6 @@ Log In Start
 Log In End
 ************************************************************* 
 */
-
 /* 
 *************************************************************
 Sign Up Start
@@ -361,7 +302,6 @@ Sign Up Start
 Sign Up End
 ************************************************************* 
 */
-
 /* 
 *************************************************************
 Media Query End
@@ -370,10 +310,6 @@ Media Query End
 
 
 @media (max-width: 1450px) {
-  /* #formSearch {
-    width: 35%;
-  } */
-
   #auth {
     width: 30%;
   }

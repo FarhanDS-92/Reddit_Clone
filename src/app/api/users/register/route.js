@@ -47,6 +47,7 @@ export async function POST(request, response) {
       { userId: user.id, username },
       process.env.JWT_SECRET
     );
+
     cookieStore.set("token", token);
 
     return NextResponse.json({ success: true, user });

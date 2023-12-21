@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link.js";
 import { useRouter } from "next/navigation.js";
 import { useState } from "react";
 
@@ -33,15 +32,24 @@ export default function Register() {
         <h1>Join Us Here On Reddit!</h1>
         <div id="register-username">
           <label>Username</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={username}
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <div id="register-password">
           <label>Password</label>
-          <input type="password" />
+          <input
+            type="password"
+            value={password}
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        <button>
-          <Link href={"/"}>Register</Link>
-        </button>
+        <button type="submit">Register</button>
+        <p>{error}</p>
       </form>
     </section>
   );
