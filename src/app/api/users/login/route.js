@@ -14,7 +14,7 @@ export async function POST(request, response) {
     if (!username || !password) {
       return NextResponse.json({
         success: false,
-        error: "You didn't provide a username and password",
+        error: "You didn't provide a username and/or password",
       });
     }
 

@@ -58,8 +58,8 @@ export default function Register() {
         <button type="submit" className="btnLR">
           Register
         </button>
-        <p>{error}</p>
       </form>
+      <p className="errorMsg">{error}</p>
     </section>
   );
 }
