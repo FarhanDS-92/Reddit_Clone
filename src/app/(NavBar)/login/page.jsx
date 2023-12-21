@@ -16,7 +16,7 @@ export default function Login() {
         <button>Login</button>
       </form>
       <div id="login-register">
-        <p>Don't have an account? Register Here:</p>
+        <p>Don't have an account? Register Here: </p>
         <button id="login-RegisterBtn">
           <Link href={"/register"}>Register?</Link>
         </button>

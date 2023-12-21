@@ -1,3 +1,14 @@
+:root {
+  --bar-width: 40px;
+  --bar-height: 5px;
+  --hamburger-gap: 2px;
+  --foreground: #333;
+  --background: white;
+  --hamburger-margin: 22px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
 html {
   box-sizing: border-box;
 }
@@ -37,9 +48,6 @@ Navbar Start
 ************************************************************* 
 */
 
-
-
-
 header {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -50,12 +58,8 @@ header {
   top: 0;
 }
 
-nav {
+#navigation {
   width: 100%;
-}
-
-
-ul {
   height: 40px;
   width: 100%;
   list-style: none;
@@ -89,13 +93,9 @@ ul {
   font-size: 40px;
 }
 
-#search {
-  width: 40%;
-  height: 100%;
-}
 
 #formSearch {
-  width: 100%;
+  width: 40%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -142,13 +142,129 @@ a:active {
   color: blue;
 }
 
-
+#space {
+  display: none;
+}
 
 /* 
 *************************************************************
 Navbar End
 ************************************************************* 
 */
+
+
+
+
+/* 
+*************************************************************
+Hamburger Menu Start
+************************************************************* 
+*/
+#menuContainer {
+  position: absolute;
+  z-index: 3;
+  top: var(--hamburger-margin);
+  right: var(--hamburger-margin);
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  cursor: pointer;
+}
+
+#hamburger-menu::before,
+#hamburger-menu::after,
+#hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 99999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), background-color var(--animation-timing);
+}
+
+
+#hamburger-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+#hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+#hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+#hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+#sideBar {
+  transition: opacity var(--animation-timing);
+  opacity: 0;
+  margin-top: calc(var(--hamburger-margin) - 3px);
+  padding: 0.5rem 2rem;
+  background-color: var(--background);
+  height: 300px;
+}
+
+#hamburger-menu:has(input:checked)+#sideBar {
+  opacity: 1;
+}
+
+
+#menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.fontColor {
+  color: var(--foreground);
+  font-weight: 600;
+
+}
+
+#homeMenu {
+  color: var(--foreground);
+  font-size: 40px;
+}
+
+
+
+
+/* 
+*************************************************************
+Hamburger Menu End
+************************************************************* 
+*/
+
+
+
+
+
+
 
 /*
 ************************************************************* 
@@ -243,5 +359,92 @@ Sign Up Start
 /* 
 *************************************************************
 Sign Up End
+************************************************************* 
+*/
+
+/* 
+*************************************************************
+Media Query End
+************************************************************* 
+*/
+
+
+@media (max-width: 1450px) {
+  /* #formSearch {
+    width: 35%;
+  } */
+
+  #auth {
+    width: 30%;
+  }
+}
+
+
+@media (max-width: 1050px) {
+  #home {
+    display: none;
+  }
+
+  #formSearch {
+    width: 60%;
+  }
+
+  #auth {
+    display: none;
+  }
+
+  #space {
+    display: block;
+    width: 10%;
+  }
+
+  #menuContainer {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #redditWord {
+    display: none;
+  }
+
+  #formSearch {
+    width: 60%;
+  }
+
+  #space {
+    width: 15%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #redditWord {
+    display: none;
+  }
+
+  #formSearch {
+    width: 60%;
+  }
+
+  #space {
+    width: 15%;
+  }
+}
+
+@media (max-width: 350px) {
+  #formSearch {
+    width: 50%;
+  }
+
+  #space {
+    width: 18%;
+  }
+}
+
+/* 
+*************************************************************
+Media Query End
 ************************************************************* 
 */
