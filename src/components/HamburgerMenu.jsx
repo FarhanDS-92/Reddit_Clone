@@ -12,13 +12,19 @@ export default function HamburgerMenu({ checkUser }) {
   };
 
   return (
-    <div id="menuContainer" onClick={toggleSidebar}>
-      <div id="hamburger-menu">
+    <div id="menuContainer">
+      <div id="hamburger-menu" onClick={toggleSidebar}>
         <span className="bar"></span>
         <span className="bar middle"></span>
         <span className="bar"></span>
       </div>
-      <aside id="sideBar" style={{ opacity: isSidebarOpen ? 1 : 0 }}>
+      <aside
+        id="sideBar"
+        style={{
+          opacity: isSidebarOpen ? 1 : 0,
+          display: isSidebarOpen ? "block" : "none",
+        }}
+      >
         <nav id="menu">
           <div>
             <Link href={"/"}>

@@ -162,6 +162,7 @@ Hamburger Menu Start
   flex-direction: column;
   gap: 2px;
   width: max-content;
+  cursor: pointer;
 }
 
 .bar {
