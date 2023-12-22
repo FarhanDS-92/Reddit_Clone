@@ -2,6 +2,7 @@ import { fetchUser } from "@/lib/fetchUser.js";
 import Link from "next/link.js";
 import { FaHome } from "react-icons/fa";
 import HamburgerMenu from "./HamburgerMenu.jsx";
+import Logout from "./Logout.jsx";
 
 export default async function NavBar() {
   const user = await fetchUser();
@@ -36,7 +37,7 @@ export default async function NavBar() {
             <Link href={"/login"}>Login</Link>
           </>
         )}
-        {user.id && <Link href={"/logout"}>Logout</Link>}
+        {user.id && <Logout />}
       </div>
 
       <div id="space"></div>

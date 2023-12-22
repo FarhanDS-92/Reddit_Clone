@@ -2,6 +2,7 @@
 import Link from "next/link.js";
 import { FaHome } from "react-icons/fa";
 import { useState } from "react";
+import Logout from "./Logout.jsx";
 
 export default function HamburgerMenu({ checkUser }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -9,6 +10,7 @@ export default function HamburgerMenu({ checkUser }) {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   return (
     <div id="menuContainer" onClick={toggleSidebar}>
       <div id="hamburger-menu">
@@ -39,9 +41,9 @@ export default function HamburgerMenu({ checkUser }) {
 
           {checkUser && (
             <div>
-              <Link href={"/logout"}>
-                <span className="fontColor">Logout</span>
-              </Link>
+              <span className="fontColor">
+                <Logout />
+              </span>
             </div>
           )}
         </nav>

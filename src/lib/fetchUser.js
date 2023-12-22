@@ -13,6 +13,7 @@ export async function fetchUser() {
 
     const decodedToken = jwt.verify(userCookie.value, process.env.JWT_SECRET);
     const { userId } = decodedToken;
+
     const user = await prisma.user.findFirst({ where: { id: userId } });
     delete user.password;
 
