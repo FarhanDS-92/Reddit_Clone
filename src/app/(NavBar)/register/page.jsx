@@ -28,7 +28,7 @@ export default function Register() {
   }
 
   return (
-    <section id="register">
+    <section id="register" aria-label="Register Page" role="region">
       <FaReddit className="redditIcon" />
       <h1 className="titleWelcome" id="titleWelcomeMargin">
         Join Us Here On Reddit!

@@ -31,7 +31,7 @@ export default function Login() {
   }
 
   return (
-    <section id="login">
+    <section id="login" aria-label="Login Page" role="region">
       <FaReddit className="redditIcon" />
       <h1 className="titleWelcome">Welcome Back!</h1>
 
