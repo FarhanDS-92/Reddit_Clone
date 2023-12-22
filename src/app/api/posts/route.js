@@ -15,6 +15,13 @@ export async function POST(request, response) {
 
     const { id } = await fetchUser();
 
+    if (!id) {
+      return NextResponse.json({
+        success: false,
+        error: "You must login to post!",
+      });
+    }
+
     const post = await prisma.post.create({
       data: {
         title,
