@@ -1,7 +1,7 @@
 export default function Subreddits() {
   return (
-    <main>
+    <section id="subredditSection">
       <p>Subreddit</p>
-    </main>
+    </section>
   );
 }

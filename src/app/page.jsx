@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <section>
+    <section id="homeSection">
       <p>Home</p>
     </section>
   );
