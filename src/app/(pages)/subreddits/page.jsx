@@ -14,7 +14,7 @@ export default async function Subreddits() {
   const user = await fetchUser();
 
   return (
-    <section id="subredditSection" aria-label="Subreddit Page" role="region">
+    <section id="subredditsSection" aria-label="Subreddit Page" role="region">
       <CreateSubreddit checkUser={user.id} />
 
       {subreddits.map((subReddit) => {

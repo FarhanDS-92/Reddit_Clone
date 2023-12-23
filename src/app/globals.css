@@ -30,13 +30,11 @@ main {
   margin-top: 50px;
 }
 
-
 /* 
 *************************************************************
 Navbar Start
 ************************************************************* 
 */
-
 header {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -210,7 +208,6 @@ Hamburger Menu End
 Log In Start
  ************************************************************* 
 */
-
 #login {
   width: 40%;
   max-width: 500px;
@@ -345,7 +342,6 @@ Log In End
 Sign Up Start
 ************************************************************* 
 */
-
 #register {
   width: 40%;
   max-width: 500px;
@@ -374,8 +370,6 @@ Sign Up Start
   margin-bottom: 20px;
 }
 
-
-
 /* 
 *************************************************************
 Sign Up End
@@ -386,8 +380,7 @@ Sign Up End
 List Of SubReddits Start
 ************************************************************* 
 */
-
-#subredditSection {
+#subredditsSection {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -459,7 +452,6 @@ List Of SubReddits End
 Create SubReddits Form/Button Start
 ************************************************************* 
 */
-
 .create-SubReddit-container {
   height: 50px;
   display: flex;
@@ -527,17 +519,33 @@ Create SubReddits Form/Button Start
   font-weight: 800;
 }
 
-
-
-
 /* 
 *************************************************************
 Create SubReddits Form/Button End
 ************************************************************* 
 */
+/* 
+*************************************************************
+The SubReddit Page Start
+************************************************************* 
+*/
+#theSubReddit {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#h1TheSubReddit {
+  font-size: 2rem;
+}
 
 
 
+/* 
+*************************************************************
+The SubReddit Page End
+************************************************************* 
+*/
 /* 
 *************************************************************
 Media Query End
