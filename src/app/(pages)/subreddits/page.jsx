@@ -1,3 +1,4 @@
+import SubredditsComponent from "@/components/SubRedditsComponent.jsx";
 import { prisma } from "@/lib/prisma.js";
 
 export default async function Subreddits() {
@@ -7,17 +8,9 @@ export default async function Subreddits() {
     },
   });
 
-  console.log(subreddits);
   return (
     <section id="subredditSection" aria-label="Subreddit Page" role="region">
-      <button id="createSubreddit">+ Create A Subreddit</button>
-      {subreddits.map((subReddit) => {
-        return (
-          <div key={subReddit.id} className="defaultSubReddit">
-            {subReddit.name}
-          </div>
-        );
-      })}
+      <SubredditsComponent subreddits={subreddits} />
     </section>
   );
 }
