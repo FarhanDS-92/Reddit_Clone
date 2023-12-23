@@ -11,7 +11,7 @@ export default async function Subreddits() {
     },
   });
 
-  const user = fetchUser();
+  const user = await fetchUser();
 
   return (
     <section id="subredditSection" aria-label="Subreddit Page" role="region">

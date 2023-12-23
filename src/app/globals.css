@@ -454,6 +454,88 @@ List Of SubReddits End
 ************************************************************* 
 */
 
+/* 
+*************************************************************
+Create SubReddits Form/Button Start
+************************************************************* 
+*/
+
+.create-SubReddit-container {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+#create-SubReddit-form {
+  display: flex;
+  gap: 5px;
+}
+
+#create-SubReddit-input {
+  width: 250px;
+  border: 1px solid black;
+  border-radius: 9999px;
+  padding: 5px 10px;
+  font-weight: 700;
+  transition: 200ms ease-in-out;
+}
+
+#create-SubReddit-input:hover,
+#create-SubReddit-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px black;
+}
+
+#create-SubReddit-submitBtn {
+  background-color: green;
+  border: none;
+  border-radius: 9999px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+  transition: 200ms ease-in-out;
+}
+
+#create-SubReddit-submitBtn:hover,
+#create-SubReddit-submitBtn:focus {
+  outline: none;
+  box-shadow: 0 0 5px black;
+}
+
+#create-SubReddit-cancelBtn {
+  background-color: red;
+  border: none;
+  border-radius: 9999px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+  transition: 200ms ease-in-out;
+}
+
+#create-SubReddit-cancelBtn:hover,
+#create-SubReddit-cancelBtn:focus {
+  outline: none;
+  box-shadow: 0 0 5px black;
+}
+
+#create-SubReddit-error {
+  text-align: center;
+  color: red;
+  font-weight: 800;
+}
+
+
+
+
+/* 
+*************************************************************
+Create SubReddits Form/Button End
+************************************************************* 
+*/
+
 
 
 /* 
