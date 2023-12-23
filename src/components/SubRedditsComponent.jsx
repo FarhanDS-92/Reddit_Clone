@@ -1,27 +1,18 @@
-"use client";
-import { useRouter } from "next/navigation.js";
+import Link from "next/link.js";
 
 export default function SubredditsComponent({ subreddits }) {
-  const router = useRouter();
-
-  function handleClickPage(subredditId) {
-    router.push(`/subreddits/${subredditId}`);
-  }
-
   return (
     <>
       <button id="createSubreddit">+ Create A Subreddit</button>
       {subreddits.map((subReddit) => {
         return (
-          <div
+          <Link
             key={subReddit.id}
+            href={`/subreddits/${subReddit.id}`}
             className="defaultSubReddit"
-            onClick={() => {
-              handleClickPage(subReddit.id);
-            }}
           >
             r/ {subReddit.name}
-          </div>
+          </Link>
         );
       })}
     </>
