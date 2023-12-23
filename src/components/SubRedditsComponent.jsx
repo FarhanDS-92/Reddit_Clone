@@ -1,9 +1,11 @@
 import Link from "next/link.js";
+import { FaReddit } from "react-icons/fa";
+import CreateSubreddit from "./CreateSubReddit.jsx";
 
 export default function SubredditsComponent({ subreddits }) {
   return (
     <>
-      <button id="createSubreddit">+ Create A Subreddit</button>
+      <CreateSubreddit />
       {subreddits.map((subReddit) => {
         return (
           <Link
@@ -11,7 +13,8 @@ export default function SubredditsComponent({ subreddits }) {
             href={`/subreddits/${subReddit.id}`}
             className="defaultSubReddit"
           >
-            r/ {subReddit.name}
+            <FaReddit id="subRedditIcon" />
+            <p id="subredditPosts">r/ {subReddit.name}</p>
           </Link>
         );
       })}

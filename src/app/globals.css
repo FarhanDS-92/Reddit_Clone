@@ -393,7 +393,7 @@ List Of SubReddits Start
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 30px;
 }
 
 #createSubreddit {
@@ -416,19 +416,35 @@ List Of SubReddits Start
 
 .defaultSubReddit {
   background-color: white;
-  height: 150px;
-  width: 50%;
+  border: 1px solid black;
+  height: 50px;
+  width: 90%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 10px;
   font-size: 1.25rem;
   cursor: pointer;
   transition: 200ms ease-in-out;
 }
 
+#subRedditIcon {
+  font-size: 30px;
+  color: #FF4500;
+}
+
+#subredditPosts {
+  height: fit-content;
+  width: 95%;
+  padding: 5px;
+  background-color: #DAE0E6;
+  margin: 0px 15px;
+}
+
 .defaultSubReddit:hover,
 .defaultSubReddit:focus {
   outline: none;
+  transform: scale(1.05);
   box-shadow: 0 0 10px black;
 }
 
