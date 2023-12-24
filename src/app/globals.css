@@ -696,6 +696,126 @@ The SubReddit Page End
 */
 /* 
 *************************************************************
+Create Titled Post Page Start
+************************************************************* 
+*/
+
+#createPostSection {
+  max-width: 800px;
+  width: 90%;
+}
+
+#createPostSection h1 {
+  font-size: 2rem;
+}
+
+#createPostSection hr {
+  height: 2px;
+  background-color: white;
+  border: none;
+  border-radius: 99999px;
+  margin-bottom: 20px;
+}
+
+#createPostSection form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#select-container {
+  width: 100%;
+  height: max-content;
+}
+
+#select-drop-down {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  min-width: 300px;
+  width: 30%;
+  padding: 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+
+.dropDownFont {
+  color: black;
+}
+
+#create-post-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+#create-post-title {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(231, 226, 226);
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+#create-post-msg {
+  width: 100%;
+  resize: vertical;
+  min-height: 250px;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(231, 226, 226);
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#create-post-container hr {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(231, 226, 226);
+  border: none;
+  border-radius: 99999px;
+}
+
+
+#submit-btn-create-post-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#submit-btn-create-post {
+  min-width: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 99999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: not-allowed;
+}
+
+#submit-create-post-error {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: red;
+}
+
+/* 
+*************************************************************
+Create Titled Post Page End
+************************************************************* 
+*/
+/* 
+*************************************************************
 Media Query End
 ************************************************************* 
 */
