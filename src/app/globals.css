@@ -21,7 +21,7 @@ p {
 }
 
 main {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -530,16 +530,57 @@ The SubReddit Page Start
 ************************************************************* 
 */
 #theSubReddit {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 30px;
 }
 
 #h1TheSubReddit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: white;
   font-size: 2rem;
+  padding: 10px;
 }
 
+#h1SubredditIcon {
+  margin-right: 20px;
+  font-size: 3rem;
+  color: #FF4500;
+}
 
+#createPost {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+#createPostIcon {
+  font-size: 40px;
+  color: #FF4500;
+}
+
+#createPostInput {
+  background-color: #DAE0E6;
+  width: 100%;
+  height: 35px;
+  border: 1px solid black;
+  padding: 2px 5px;
+}
+
+.manyPosts {
+  width: 90%;
+  background-color: white;
+  padding: 10px 20px;
+  border: 1px solid black;
+}
 
 /* 
 *************************************************************
