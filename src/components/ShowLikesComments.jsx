@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
-import { PiArrowFatUp } from "react-icons/pi";
-import { PiArrowFatDown } from "react-icons/pi";
+import InteractiveLikesOnParent from "./InteractiveLikesOnParent.jsx";
+import { FaRegCommentAlt } from "react-icons/fa";
 
-export default async function ShowLikesComments({ votes, post }) {
+export default async function ShowLikesComments({ votes, post, user }) {
   const comments = await prisma.post.findMany({
     where: {
       parentId: post.id,
@@ -27,18 +27,17 @@ export default async function ShowLikesComments({ votes, post }) {
   return (
     <>
       <div className="likesComments">
-        <div className="likes">
-          <button>
-            <PiArrowFatUp />
-          </button>
-          <p>{getNumberOfVotes(post.id)}</p>
-          <button>
-            <PiArrowFatDown />
-          </button>
-        </div>
-
+        <InteractiveLikesOnParent
+          votes={getNumberOfVotes(post.id)}
+          post={post}
+          user={user}
+        />
         <Link href={`/posts/${post.id}`}>
-          <div className="comments">{comments.length}</div>
+          <div className="comments">
+            <FaRegCommentAlt />
+            {comments.length}
+            <p>Comments</p>
+          </div>
         </Link>
       </div>
     </>

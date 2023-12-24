@@ -560,6 +560,13 @@ The SubReddit Page Start
   background-color: white;
   border: 1px solid black;
   padding: 5px 10px;
+  transition: 200ms ease-in-out;
+}
+
+#createPost:hover,
+#createPost:focus {
+  outline: none;
+  box-shadow: 0 0 5px black;
 }
 
 #createPostIcon {
@@ -577,9 +584,109 @@ The SubReddit Page Start
 
 .manyPosts {
   width: 90%;
+  height: max-content;
   background-color: white;
-  padding: 10px 20px;
+  position: relative;
+}
+
+.manyPosts h5 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.postContent {
+  overflow-y: auto;
+  padding-top: 10px;
+  padding-bottom: 90px;
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
   border: 1px solid black;
+  transition: 200ms ease-in-out;
+}
+
+.postContent:hover,
+.postContent:focus {
+  outline: none;
+  box-shadow: 0 0 10px black;
+}
+
+#circleIcon {
+  color: blue;
+}
+
+.manyPosts h2 {
+  margin: 0;
+}
+
+#subRedditPostMessage {
+  margin-top: 5px;
+}
+
+.likesComments {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 9999px;
+}
+
+.likes p {
+  padding-right: 10px;
+  border-right: 1px solid black;
+}
+
+.likes button {
+  border: none;
+  background-color: white;
+  font-size: 1rem;
+  border-radius: 100%;
+  transition: 100ms ease-in-out;
+}
+
+.likes button:hover,
+.likes button:focus {
+  outline: none;
+  box-shadow: 0 0 3px black;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4.5px 10px;
+  border: 1px solid black;
+  border-radius: 9999px;
+  font-size: 1rem;
+  transition: 100ms ease-in-out;
+}
+
+.comments:hover,
+.comments:focus {
+  outline: none;
+  box-shadow: 0 0 3px black;
+}
+
+#showErrorLoginVote {
+  position: absolute;
+  color: red;
+  font-weight: 700;
+  bottom: -20px;
+  left: 0;
 }
 
 /* 

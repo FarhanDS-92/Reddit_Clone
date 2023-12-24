@@ -1,13 +1,15 @@
-import CreatePost from "@/components/CreatePost.jsx";
 import ShowLikesComments from "@/components/ShowLikesComments.jsx";
+import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
 import { FaReddit } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 
 export default async function subRedditId({ params }) {
   const { subredditId } = params;
   const users = await prisma.user.findMany();
   const votes = await prisma.vote.findMany();
+  const user = await fetchUser();
 
   const subreddit = await prisma.subReddit.findFirst({
     where: {
@@ -41,19 +43,25 @@ export default async function subRedditId({ params }) {
         r/ {subreddit.name}
       </h1>
 
-      <CreatePost />
+      <Link id="createPost" href={"/createPost"}>
+        <FaReddit id="createPostIcon" />
+        <input type="text" placeholder="Create a post" id="createPostInput" />
+      </Link>
 
       {posts.map((post) => (
         <div className="manyPosts" key={post.id}>
           <Link href={`/posts/${post.id}`}>
             <div className="postContent">
-              <p>{getUserName(post.userId)}</p>
-              <p>{post.title}</p>
-              <p>{post.message}</p>
+              <h5>
+                <FaUserCircle id="circleIcon" />
+                {getUserName(post.userId)}
+              </h5>
+              <h2>{post.title}</h2>
+              <p id="subRedditPostMessage">{post.message}</p>
             </div>
           </Link>
 
-          <ShowLikesComments post={post} votes={votes} />
+          <ShowLikesComments post={post} votes={votes} user={user} />
         </div>
       ))}
     </section>
