@@ -26,7 +26,7 @@ export default function CreateTitledPost({ checkUser, subreddits }) {
           }),
         });
 
-        const data = res.json();
+        const data = await res.json();
 
         if (data.error) {
           return setError(data.error.message);
