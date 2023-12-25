@@ -75,7 +75,7 @@ export default function CreateSubreddit({ checkUser }) {
           <p id="create-SubReddit-error">{error}</p>
         </div>
       )}
-      <p>{isLoggedIn}</p>
+      <p id="create-subreddit-is-logged-in-msg">{isLoggedIn}</p>
     </>
   );
 }

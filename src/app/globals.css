@@ -519,6 +519,12 @@ Create SubReddits Form/Button Start
   font-weight: 800;
 }
 
+#create-subreddit-is-logged-in-msg {
+  text-align: center;
+  color: red;
+  font-weight: 800;
+}
+
 /* 
 *************************************************************
 Create SubReddits Form/Button End
