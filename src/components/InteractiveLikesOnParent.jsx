@@ -45,6 +45,10 @@ export default function InteractiveLikesOnParent({
           if (voted === false) {
             x = votes + 2;
             setLikes(x);
+          } else if (voted === true) {
+          } else {
+            x = votes + 1;
+            setLikes(x);
           }
         } else if (isClicked === false) {
           x = likes + 2;
@@ -76,6 +80,10 @@ export default function InteractiveLikesOnParent({
         if (isClicked === null) {
           if (voted === true) {
             x = votes - 2;
+            setLikes(x);
+          } else if (voted === false) {
+          } else {
+            x = votes - 1;
             setLikes(x);
           }
         } else if (isClicked === true) {
