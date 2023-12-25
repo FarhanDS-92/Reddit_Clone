@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation.js";
 import { useEffect, useState } from "react";
 import { PiArrowFatUp } from "react-icons/pi";
 import { PiArrowFatUpFill } from "react-icons/pi";
@@ -18,10 +19,13 @@ export default function InteractiveLikesOnParent({
   const [error, setError] = useState("");
   const [isClicked, setIsClicked] = useState(null);
 
+  const router = useRouter();
+
   useEffect(() => {
     if (sameUser) {
       setVoted(sameUser.isUpvote);
     }
+    router.refresh();
   }, []);
 
   async function handlePlus() {

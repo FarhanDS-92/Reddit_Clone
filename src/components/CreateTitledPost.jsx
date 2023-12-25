@@ -32,7 +32,6 @@ export default function CreateTitledPost({ checkUser, subreddits }) {
       if (data.error) {
         return setError(data.error);
       } else {
-        router.refresh();
         router.push(`/subreddits/${choiceSelect}`);
       }
     } else {
