@@ -1,15 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PiArrowFatUp } from "react-icons/pi";
 import { PiArrowFatUpFill } from "react-icons/pi";
 import { PiArrowFatDown } from "react-icons/pi";
 import { PiArrowFatDownFill } from "react-icons/pi";
 
-export default function InteractiveLikesOnParent({ votes, post, user }) {
+export default function InteractiveLikesOnParent({
+  votes,
+  post,
+  user,
+  sameUser,
+}) {
   const [likes, setLikes] = useState(votes);
   const [isUpVote, setIsUpVote] = useState(null);
+  const [voted, setVoted] = useState(null);
   const [error, setError] = useState("");
+  const [isClicked, setIsClicked] = useState(null);
+
+  useEffect(() => {
+    if (sameUser) {
+      setVoted(sameUser.isUpvote);
+    }
+  }, []);
 
   async function handlePlus() {
     if (user.id) {
@@ -21,8 +34,21 @@ export default function InteractiveLikesOnParent({ votes, post, user }) {
             isUpvote: true,
           }),
         });
-        const x = votes + 1;
-        setLikes(x);
+
+        let x;
+
+        if (isClicked === null) {
+          if (voted === false) {
+            x = votes + 2;
+            setLikes(x);
+          }
+        } else if (isClicked === false) {
+          x = likes + 2;
+          setLikes(x);
+        }
+
+        setVoted(true);
+        setIsClicked(true);
         setIsUpVote(true);
       }
     } else {
@@ -40,8 +66,21 @@ export default function InteractiveLikesOnParent({ votes, post, user }) {
             isUpvote: false,
           }),
         });
-        const x = votes - 1;
-        setLikes(x);
+
+        let x;
+
+        if (isClicked === null) {
+          if (voted === true) {
+            x = votes - 2;
+            setLikes(x);
+          }
+        } else if (isClicked === true) {
+          x = likes - 2;
+          setLikes(x);
+        }
+
+        setVoted(false);
+        setIsClicked(false);
         setIsUpVote(false);
       }
     } else {
@@ -55,19 +94,20 @@ export default function InteractiveLikesOnParent({ votes, post, user }) {
         <button
           onClick={handlePlus}
           style={{
-            color: isUpVote ? "#FF4500" : "black",
+            color: isUpVote || voted ? "#FF4500" : "black",
           }}
         >
-          {isUpVote ? <PiArrowFatUpFill /> : <PiArrowFatUp />}
+          {isUpVote || voted ? <PiArrowFatUpFill /> : <PiArrowFatUp />}
         </button>
 
         <p
           style={{
-            color: isUpVote
-              ? "#FF4500"
-              : isUpVote === false
-              ? "purple"
-              : "black",
+            color:
+              isUpVote || voted
+                ? "#FF4500"
+                : isUpVote === false || voted === false
+                ? "purple"
+                : "black",
           }}
         >
           {likes}
@@ -76,10 +116,14 @@ export default function InteractiveLikesOnParent({ votes, post, user }) {
         <button
           onClick={handleMinus}
           style={{
-            color: isUpVote === false ? "purple" : "black",
+            color: isUpVote === false || voted === false ? "purple" : "black",
           }}
         >
-          {isUpVote === false ? <PiArrowFatDownFill /> : <PiArrowFatDown />}
+          {isUpVote === false || voted === false ? (
+            <PiArrowFatDownFill />
+          ) : (
+            <PiArrowFatDown />
+          )}
         </button>
       </div>
       <p id="showErrorLoginVote">{error}</p>

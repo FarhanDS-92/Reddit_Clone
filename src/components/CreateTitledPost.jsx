@@ -15,30 +15,30 @@ export default function CreateTitledPost({ checkUser, subreddits }) {
 
     if (!checkUser) {
       return setError("You need to login to create a post!");
-    } else {
-      if (choiceSelect && title && message) {
-        const res = await fetch("/api/posts", {
-          method: "POST",
-          body: JSON.stringify({
-            title: title,
-            message: message,
-            subredditId: choiceSelect,
-          }),
-        });
+    }
 
-        const data = await res.json();
+    if (choiceSelect && title && message) {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        body: JSON.stringify({
+          title: title,
+          message: message,
+          subredditId: choiceSelect,
+        }),
+      });
 
-        if (data.error) {
-          return setError(data.error.message);
-        } else {
-          router.refresh();
-          router.push(`/subreddits/${choiceSelect}`);
-        }
+      const data = await res.json();
+
+      if (data.error) {
+        return setError(data.error);
       } else {
-        setError(
-          "You need to choose a subreddit and create a title and a message!"
-        );
+        router.refresh();
+        router.push(`/subreddits/${choiceSelect}`);
       }
+    } else {
+      setError(
+        "You need to choose a subreddit and create a title and a message!"
+      );
     }
   }
 

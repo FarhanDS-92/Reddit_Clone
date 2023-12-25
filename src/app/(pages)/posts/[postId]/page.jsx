@@ -10,7 +10,5 @@ export default async function postId({ params }) {
     },
   });
 
-  console.log(mainPost);
-
   return <h1>Post ID</h1>;
 }

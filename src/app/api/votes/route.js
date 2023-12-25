@@ -41,6 +41,7 @@ export async function POST(request, response) {
     if (searchVote) {
       vote = await prisma.vote.update({
         where: {
+          id: searchVote.id,
           userId: id,
           postId,
         },

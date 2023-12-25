@@ -13,9 +13,9 @@ export async function POST(request, response) {
       });
     }
 
-    const { id } = await fetchUser();
+    const user = await fetchUser();
 
-    if (!id) {
+    if (!user.id) {
       return NextResponse.json({
         success: false,
         error: "You must login to post!",
@@ -27,8 +27,9 @@ export async function POST(request, response) {
         title,
         message,
         parentId,
-        userId: id,
+        userId: user.id,
         subredditId,
+        // user: { connect: { id: user.id } },
       },
     });
 

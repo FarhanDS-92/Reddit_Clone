@@ -19,7 +19,7 @@ export default async function subRedditId({ params }) {
 
   const posts = await prisma.post.findMany({
     where: {
-      subRedditId: subredditId,
+      subredditId: subredditId,
       parentId: null,
     },
     orderBy: {

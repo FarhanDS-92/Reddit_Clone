@@ -10,6 +10,13 @@ export default async function ShowLikesComments({ votes, post, user }) {
     },
   });
 
+  const sameUser = await prisma.vote.findFirst({
+    where: {
+      postId: post.id,
+      userId: user.id,
+    },
+  });
+
   function getNumberOfVotes(postId) {
     const votesForPost = votes.filter((vote) => vote.postId === postId);
     let numberOfVotes = 0;
@@ -21,6 +28,7 @@ export default async function ShowLikesComments({ votes, post, user }) {
         numberOfVotes -= 1;
       }
     }
+
     return numberOfVotes;
   }
 
@@ -31,6 +39,7 @@ export default async function ShowLikesComments({ votes, post, user }) {
           votes={getNumberOfVotes(post.id)}
           post={post}
           user={user}
+          sameUser={sameUser}
         />
         <Link href={`/posts/${post.id}`}>
           <div className="comments">
