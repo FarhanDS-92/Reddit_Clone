@@ -1,21 +1,19 @@
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
-import InteractiveLikesOnParent from "./InteractiveLikesOnParent.jsx";
 import { FaRegCommentAlt } from "react-icons/fa";
+import InteractiveLikes from "./InteractiveLikes.jsx";
 
 export default async function ShowLikesComments({ votes, post, user }) {
-  const comments = await prisma.post.findMany({
-    where: {
-      parentId: post.id,
-    },
-  });
+  let checkUser;
 
-  const sameUser = await prisma.vote.findFirst({
-    where: {
-      postId: post.id,
-      userId: user.id,
-    },
-  });
+  if (user.id) {
+    checkUser = await prisma.vote.findFirst({
+      where: {
+        postId: post.id,
+        userId: user.id,
+      },
+    });
+  }
 
   function getNumberOfVotes(postId) {
     const votesForPost = votes.filter((vote) => vote.postId === postId);
@@ -35,16 +33,15 @@ export default async function ShowLikesComments({ votes, post, user }) {
   return (
     <>
       <div className="likesComments">
-        <InteractiveLikesOnParent
+        <InteractiveLikes
           votes={getNumberOfVotes(post.id)}
           post={post}
           user={user}
-          sameUser={sameUser}
+          checkUser={checkUser}
         />
         <Link href={`/posts/${post.id}`}>
           <div className="comments">
             <FaRegCommentAlt />
-            {comments.length}
             <p>Comments</p>
           </div>
         </Link>

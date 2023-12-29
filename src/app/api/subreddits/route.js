@@ -15,7 +15,7 @@ export async function POST(request, response) {
     }
 
     if (!name) {
-      return NextResponse({
+      return NextResponse.json({
         success: false,
         error: "Need a name for the subreddit.",
       });

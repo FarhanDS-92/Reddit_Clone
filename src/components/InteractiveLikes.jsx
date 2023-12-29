@@ -7,12 +7,7 @@ import { PiArrowFatUpFill } from "react-icons/pi";
 import { PiArrowFatDown } from "react-icons/pi";
 import { PiArrowFatDownFill } from "react-icons/pi";
 
-export default function InteractiveLikesOnParent({
-  votes,
-  post,
-  user,
-  sameUser,
-}) {
+export default function InteractiveLikes({ votes, post, user, checkUser }) {
   const [likes, setLikes] = useState(votes);
   const [isUpVote, setIsUpVote] = useState(null);
   const [voted, setVoted] = useState(null);
@@ -22,8 +17,8 @@ export default function InteractiveLikesOnParent({
   const router = useRouter();
 
   useEffect(() => {
-    if (sameUser) {
-      setVoted(sameUser.isUpvote);
+    if (checkUser) {
+      setVoted(checkUser.isUpvote);
     }
     router.refresh();
   }, []);

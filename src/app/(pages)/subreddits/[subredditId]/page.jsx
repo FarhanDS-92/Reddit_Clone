@@ -5,7 +5,7 @@ import Link from "next/link.js";
 import { FaReddit } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 
-export default async function subRedditId({ params }) {
+export default async function chosenSubReddit({ params }) {
   const { subredditId } = params;
   const users = await prisma.user.findMany();
   const votes = await prisma.vote.findMany();
@@ -53,7 +53,7 @@ export default async function subRedditId({ params }) {
           <Link href={`/posts/${post.id}`}>
             <div className="postContent">
               <h5>
-                <FaUserCircle id="circleIcon" />
+                <FaUserCircle id="circleIcon" /> Posted by u/
                 {getUserName(post.userId)}
               </h5>
               <h2>{post.title}</h2>

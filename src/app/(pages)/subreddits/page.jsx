@@ -4,7 +4,7 @@ import { FaReddit } from "react-icons/fa";
 import { fetchUser } from "@/lib/fetchUser.js";
 import CreateSubreddit from "@/components/CreateSubReddit.jsx";
 
-export default async function Subreddits() {
+export default async function AllSubreddits() {
   const subreddits = await prisma.subReddit.findMany({
     orderBy: {
       createdAt: "desc",

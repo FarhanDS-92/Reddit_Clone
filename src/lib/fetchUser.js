@@ -16,7 +16,10 @@ export async function fetchUser() {
     const user = await prisma.user.findFirst({
       where: { id: userId },
     });
-    delete user.password;
+
+    if (user) {
+      delete user.password;
+    }
 
     return user;
   } catch (error) {

@@ -29,7 +29,6 @@ export async function POST(request, response) {
         parentId,
         userId: user.id,
         subredditId,
-        // user: { connect: { id: user.id } },
       },
     });
 

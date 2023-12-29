@@ -548,7 +548,7 @@ The SubReddit Page Start
   align-items: center;
   width: 100%;
   background-color: white;
-  font-size: 2rem;
+  font-size: 2.5rem;
   padding: 10px;
 }
 
@@ -600,6 +600,8 @@ The SubReddit Page Start
   display: flex;
   align-items: center;
   gap: 5px;
+  font-weight: 200;
+  color: gray;
 }
 
 .postContent {
@@ -620,7 +622,7 @@ The SubReddit Page Start
 }
 
 #circleIcon {
-  color: blue;
+  color: gray;
 }
 
 .manyPosts h2 {
@@ -642,6 +644,7 @@ The SubReddit Page Start
 }
 
 .likes {
+  width: max-content;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -657,6 +660,7 @@ The SubReddit Page Start
 }
 
 .likes button {
+  cursor: pointer;
   border: none;
   background-color: white;
   font-size: 1rem;
@@ -691,6 +695,7 @@ The SubReddit Page Start
   position: absolute;
   color: red;
   font-weight: 700;
+  font-size: 0.8rem;
   bottom: -20px;
   left: 0;
 }
@@ -818,6 +823,217 @@ Create Titled Post Page Start
 /* 
 *************************************************************
 Create Titled Post Page End
+************************************************************* 
+*/
+/* 
+*************************************************************
+Display Post and its Comments Section Page Start
+************************************************************* 
+*/
+
+#display-posts-comments-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 
+*************************************************************
+Display Post and its Comments Section Page End
+************************************************************* 
+*/
+/* 
+*************************************************************
+Display Main Post - Section Page Start
+************************************************************* 
+*/
+
+#mainPostContainer {
+  background-color: white;
+  width: 90%;
+  height: max-content;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#mainPostDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#mainPostContainer h1,
+#mainPostContainer h5 {
+  margin: 0;
+}
+
+#mainPostContainer h1 {
+  font-size: 35px;
+}
+
+#mainPostContainer h5 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: gray;
+}
+
+#mainPostFormContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+#mainPostTitle {
+  width: 100%;
+  font-size: 35px;
+}
+
+#mainPostMessage {
+  width: 100%;
+  resize: vertical;
+}
+
+#mainPost-submit-edit {
+  border: none;
+  border-radius: 99999px;
+  padding: 5px 10px;
+  font-weight: 700;
+  color: white;
+  background-color: green;
+}
+
+#mainPost-error-edit {
+  color: red;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+
+#main-btns {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mainPost-Likes-Comments {
+  display: flex;
+  gap: 10px;
+}
+
+#mainPost-comments {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4.5px 10px;
+  border: 1px solid black;
+  border-radius: 9999px;
+  font-size: 1rem;
+  transition: 100ms ease-in-out;
+}
+
+#mainPost-delete-edit-container {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#mainPost-delete-edit-container button {
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  padding: 5px;
+  font-size: 1.5rem;
+}
+
+#form-comments {
+  width: 90%;
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  background-color: white;
+}
+
+
+/* 
+*************************************************************
+Display Main Post - Section Page End
+************************************************************* 
+*/
+
+/* 
+*************************************************************
+Display Main Post - Section -- Create Comment -- Page Start
+************************************************************* 
+*/
+
+#create-comment-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#create-comment-text-container {
+  width: 100%;
+}
+
+#create-comment-text-container p {
+  margin-bottom: 2px;
+}
+
+#create-comment-user-link {
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+#create-comment-user-link:link {
+  color: blue;
+}
+
+#create-comment-user-link:visited {
+  color: blue;
+}
+
+#create-comment-user-link:hover {
+  color: purple;
+}
+
+#create-comment-user-link:active {
+  color: black;
+}
+
+#create-comment-text {
+  resize: vertical;
+  width: 100%;
+  min-height: 100px;
+}
+
+#create-comment-button-container {
+  width: 100%;
+}
+
+
+
+/* 
+*************************************************************
+Display Main Post - Section -- Create Comment -- Page End
 ************************************************************* 
 */
 /* 

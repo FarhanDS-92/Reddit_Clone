@@ -2,7 +2,7 @@ import CreateTitledPost from "@/components/CreateTitledPost.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
 
-export default async function createPost() {
+export default async function CreatingPost() {
   const user = await fetchUser();
 
   const subreddits = await prisma.subReddit.findMany({
