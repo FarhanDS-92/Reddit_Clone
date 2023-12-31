@@ -1,11 +1,15 @@
 import CreateComment from "@/components/CreateComment.jsx";
 import DisplayMainPost from "@/components/DisplayMainPost.jsx";
+import FirstTierComments from "@/components/FirstTierComments.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
 import { FaReddit } from "react-icons/fa";
 
 export default async function postWithComments({ params }) {
-  const { postId } = params;
+  const { subredditId, postId } = params;
+
+  let checkUser;
+  const user = await fetchUser();
   const votes = await prisma.vote.findMany();
 
   const mainPost = await prisma.post.findFirst({
@@ -20,18 +24,22 @@ export default async function postWithComments({ params }) {
       id: mainPost.userId,
     },
   });
-
   delete postOwner.password;
-
-  const user = await fetchUser();
 
   const subreddit = await prisma.subReddit.findFirst({
     where: {
-      id: mainPost.subRedditId,
+      id: subredditId,
     },
   });
 
-  let checkUser;
+  const comments = await prisma.post.findMany({
+    where: {
+      parentId: postId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
   if (user.id) {
     checkUser = await prisma.vote.findFirst({
@@ -59,7 +67,18 @@ export default async function postWithComments({ params }) {
       />
 
       <div id="form-comments">
-        <CreateComment user={user} post={mainPost} />
+        <CreateComment user={user} post={mainPost} subredditId={subredditId} />
+
+        <hr id="divider-comment" />
+
+        {comments.map((comment) => (
+          <FirstTierComments
+            key={comment.id}
+            comment={comment}
+            votes={votes}
+            user={user}
+          />
+        ))}
       </div>
     </section>
   );

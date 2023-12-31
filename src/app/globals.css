@@ -969,13 +969,11 @@ Display Main Post - Section Page Start
   background-color: white;
 }
 
-
 /* 
 *************************************************************
 Display Main Post - Section Page End
 ************************************************************* 
 */
-
 /* 
 *************************************************************
 Display Main Post - Section -- Create Comment -- Page Start
@@ -988,6 +986,7 @@ Display Main Post - Section -- Create Comment -- Page Start
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 #create-comment-text-container {
@@ -1000,7 +999,6 @@ Display Main Post - Section -- Create Comment -- Page Start
 
 #create-comment-user-link {
   margin-left: 5px;
-  text-decoration: underline;
 }
 
 #create-comment-user-link:link {
@@ -1023,19 +1021,183 @@ Display Main Post - Section -- Create Comment -- Page Start
   resize: vertical;
   width: 100%;
   min-height: 100px;
+  margin: 0;
+  border: 1px solid #DAE0E6;
+}
+
+#create-comment-text:hover,
+#create-comment-text:focus {
+  outline: none;
+
 }
 
 #create-comment-button-container {
+  border: none;
   width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+#create-comment-error {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
 
+#create-comment-button-container button {
+  font-weight: 700;
+  padding: 3px 20px;
+  border: none;
+  border-radius: 99999px;
+}
 
 /* 
 *************************************************************
 Display Main Post - Section -- Create Comment -- Page End
 ************************************************************* 
 */
+
+/* 
+*************************************************************
+1st Tier Comment - Start
+************************************************************* 
+*/
+
+#divider-comment {
+  width: 95%;
+  border: 1px solid #DAE0E6;
+}
+
+.comment {
+  margin: 20px 0;
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment h5 {
+  margin: 0;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comment-icon {
+  color: #FF4500;
+  font-size: 1.5rem;
+}
+
+.comment-reply {
+  margin-left: 28px;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.interactive-btns {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* 
+*************************************************************
+1st Tier Comment - End
+************************************************************* 
+*/
+
+
+
+/* 
+*************************************************************
+Reply, Edit, and Delete components - Start
+************************************************************* 
+*/
+
+.icons {
+  font-size: 1.20rem;
+  color: black;
+}
+
+.reply {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 3px 10px;
+  border-radius: 99999px;
+  transition: 100ms ease-in-out;
+}
+
+.reply:hover,
+.reply:focus {
+  outline: none;
+  box-shadow: 0 0 3px black;
+}
+
+.edit {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 3px 10px;
+  border-radius: 99999px;
+  transition: 100ms ease-in-out;
+}
+
+.edit:hover,
+.edit:focus {
+  outline: none;
+  box-shadow: 0 0 3px black;
+}
+
+.delete {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 3px 10px;
+  border-radius: 99999px;
+  transition: 100ms ease-in-out;
+}
+
+.delete:hover,
+.delete:focus {
+  outline: none;
+  box-shadow: 0 0 3px black;
+}
+
+#edit-box {
+  height: 100px;
+  width: 300px;
+  background-color: red;
+}
+
+
+/* 
+*************************************************************
+Reply, Edit, and Delete components - End
+************************************************************* 
+*/
+
+
+
+
+
 /* 
 *************************************************************
 Media Query End

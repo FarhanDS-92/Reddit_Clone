@@ -50,7 +50,7 @@ export default async function chosenSubReddit({ params }) {
 
       {posts.map((post) => (
         <div className="manyPosts" key={post.id}>
-          <Link href={`/posts/${post.id}`}>
+          <Link href={`/subreddits/${subredditId}/${post.id}`}>
             <div className="postContent">
               <h5>
                 <FaUserCircle id="circleIcon" /> Posted by u/
