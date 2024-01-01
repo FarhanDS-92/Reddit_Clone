@@ -1,11 +1,14 @@
 import { prisma } from "@/lib/prisma.js";
 import { FaUserCircle } from "react-icons/fa";
-import InteractiveLikes from "./InteractiveLikes.jsx";
-import ReplyBtn from "./Reply.jsx";
-import EditBtn from "./Edit.jsx";
-import DeleteBtn from "./Delete.jsx";
+import CommentContent from "./CommentContent.jsx";
+import Replies from "./Replies.jsx";
 
-export default async function FirstTierComments({ comment, votes, user }) {
+export default async function FirstTierComments({
+  comment,
+  votes,
+  user,
+  subredditId,
+}) {
   let checkUser;
 
   const commentOwner = await prisma.user.findFirst({
@@ -14,18 +17,11 @@ export default async function FirstTierComments({ comment, votes, user }) {
     },
   });
 
-  function getNumberOfVotes(postId) {
-    const votesForPost = votes.filter((vote) => vote.postId === postId);
-    let numberOfVotes = 0;
-    for (let i = 0; i < votesForPost.length; i++) {
-      if (votesForPost[i].isUpvote === true) {
-        numberOfVotes += 1;
-      } else if (votesForPost[i].isUpvote === false) {
-        numberOfVotes -= 1;
-      }
-    }
-    return numberOfVotes;
-  }
+  const replies = await prisma.post.findMany({
+    where: {
+      parentId: comment.id,
+    },
+  });
 
   if (user.id) {
     checkUser = await prisma.vote.findFirst({
@@ -37,30 +33,29 @@ export default async function FirstTierComments({ comment, votes, user }) {
   }
 
   return (
-    <div className="comment">
+    <div className="comment-reply">
       <h5>
         <FaUserCircle className="comment-icon" />
         {commentOwner.username}
       </h5>
 
-      <div className="comment-reply">
-        <div className="comment-details">
-          <p>{comment.message}</p>
+      <CommentContent
+        user={user}
+        votes={votes}
+        post={comment}
+        checkUser={checkUser}
+        subredditId={subredditId}
+      />
 
-          <div className="interactive-btns">
-            <InteractiveLikes
-              votes={getNumberOfVotes(comment.id)}
-              post={comment}
-              user={user}
-              checkUser={checkUser}
-            />
-
-            <ReplyBtn />
-            {user.id === comment.userId ? <EditBtn /> : null}
-            {user.id === comment.userId ? <DeleteBtn post={comment} /> : null}
-          </div>
-        </div>
-      </div>
+      {replies.map((reply) => (
+        <Replies
+          reply={reply}
+          key={reply.id}
+          votes={votes}
+          user={user}
+          subredditId={subredditId}
+        />
+      ))}
     </div>
   );
 }

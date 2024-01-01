@@ -6,10 +6,17 @@ export async function POST(request, response) {
   try {
     const { title, message, subredditId, parentId } = await request.json();
 
-    if (!message || !subredditId) {
+    if (!message) {
       return NextResponse.json({
         success: false,
-        error: "You did not provide a message and/or a subreddit to post to",
+        error: "You did not provide a message to post",
+      });
+    }
+
+    if (!subredditId) {
+      return NextResponse.json({
+        success: false,
+        error: "You did not provide a subreddit to post to",
       });
     }
 

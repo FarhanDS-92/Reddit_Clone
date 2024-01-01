@@ -51,6 +51,7 @@ export default function CreateComment({ post, user, subredditId }) {
         </p>
         <textarea
           id="create-comment-text"
+          placeholder="comment here..."
           value={text}
           onChange={(e) => {
             setText(e.target.value);

@@ -965,6 +965,7 @@ Display Main Post - Section Page Start
   width: 90%;
   display: flex;
   padding-top: 20px;
+  padding-bottom: 20px;
   flex-direction: column;
   background-color: white;
 }
@@ -1069,15 +1070,16 @@ Display Main Post - Section -- Create Comment -- Page End
   border: 1px solid #DAE0E6;
 }
 
-.comment {
-  margin: 20px 0;
+.comment-reply {
+  margin: 0 0;
+  margin-bottom: 20px;
   width: 100%;
   padding-left: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.comment h5 {
+.comment-reply h5 {
   margin: 0;
   margin-bottom: 5px;
   display: flex;
@@ -1092,8 +1094,9 @@ Display Main Post - Section -- Create Comment -- Page End
   font-size: 1.5rem;
 }
 
-.comment-reply {
+.comment-content {
   margin-left: 28px;
+  padding-bottom: 20px;
 }
 
 .comment-details {
@@ -1185,6 +1188,8 @@ Reply, Edit, and Delete components - Start
   height: 100px;
   width: 300px;
   background-color: red;
+  bottom: 0;
+  left: 0;
 }
 
 
@@ -1195,9 +1200,109 @@ Reply, Edit, and Delete components - End
 */
 
 
+/* 
+*************************************************************
+Comment Content - Start
+************************************************************* 
+*/
+
+.comment-submit-edit-form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.comment-edit {
+  width: 100%;
+  resize: vertical;
+}
+
+.comment-submit-edit-btn {
+  border: none;
+  border-radius: 99999px;
+  padding: 5px 10px;
+  font-weight: 700;
+  color: white;
+  background-color: green;
+}
+
+.comment-edit-error {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: red;
+}
+
+.comment-submit-reply-form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.comment-reply-form {
+  width: 100%;
+  resize: vertical;
+}
+
+.comment-submit-reply-btn {
+  border: none;
+  border-radius: 99999px;
+  padding: 5px 10px;
+  font-weight: 700;
+}
+
+
+/* 
+*************************************************************
+Comment Content - End
+************************************************************* 
+*/
+/* 
+*************************************************************
+Replies Component - Start
+************************************************************* 
+*/
+
+
+.replies {
+  padding-left: 28px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.replies-container {
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+
+
+.reply-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.replies hr {
+  height: 2px;
+  border: none;
+  width: 100%;
+  background-color: #DAE0E6;
+}
 
 
 
+/* 
+*************************************************************
+Replies Component - End
+************************************************************* 
+*/
 /* 
 *************************************************************
 Media Query End

@@ -8,7 +8,6 @@ import { FaReddit } from "react-icons/fa";
 export default async function postWithComments({ params }) {
   const { subredditId, postId } = params;
 
-  let checkUser;
   const user = await fetchUser();
   const votes = await prisma.vote.findMany();
 
@@ -41,6 +40,7 @@ export default async function postWithComments({ params }) {
     },
   });
 
+  let checkUser;
   if (user.id) {
     checkUser = await prisma.vote.findFirst({
       where: {
@@ -77,6 +77,7 @@ export default async function postWithComments({ params }) {
             comment={comment}
             votes={votes}
             user={user}
+            subredditId={subredditId}
           />
         ))}
       </div>
