@@ -13,7 +13,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #DAE0E6;
+  height: 100vh;
 }
+
 
 p {
   margin: 0;
@@ -28,7 +30,51 @@ main {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  margin-bottom: 100px;
 }
+
+/* 
+*************************************************************
+Footer Start
+************************************************************* 
+*/
+footer {
+  border-top: 1px solid black;
+  position: fixed;
+  background-color: white;
+  z-index: 10;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer h2 {
+  margin: 0
+}
+
+footer p {
+  font-size: 1.25rem;
+}
+
+#footer-link {
+  text-decoration: underline;
+  color: blue;
+}
+
+#footer-link:focus,
+#footer-link:active {
+  color: purple;
+}
+
+/* 
+*************************************************************
+Footer End
+************************************************************* 
+*/
 
 /* 
 *************************************************************
@@ -43,6 +89,7 @@ header {
   background-color: white;
   position: sticky;
   top: 0;
+  border-bottom: 1px solid black;
 }
 
 #navigation {
@@ -145,16 +192,18 @@ Hamburger Menu Start
 */
 #menuContainer {
   position: absolute;
-  z-index: 3;
+  z-index: 12;
   top: 22px;
   right: 0;
   display: none;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  background-color: white;
 }
 
 #hamburger-menu {
+  z-index: 12;
   padding-right: 22px;
   display: flex;
   flex-direction: column;
@@ -186,6 +235,8 @@ Hamburger Menu Start
   align-items: center;
   justify-content: space-around;
 }
+
+
 
 .fontColor {
   color: black;

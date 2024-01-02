@@ -5,12 +5,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <NavBar />
-        </header>
-        <main>{children}</main>
+        <div className="wrapper">
+          <header>
+            <NavBar />
+          </header>
+          <main>{children}</main>
+        </div>
 
-        <footer></footer>
+        <footer>
+          <h2>Created By: Farhan D. Siddiqi</h2>
+          <p>
+            Web Portfolio{" "}
+            <a href="https://farhandev.ca/" target="blank_" id="footer-link">
+              here
+            </a>
+          </p>
+        </footer>
       </body>
     </html>
   );
