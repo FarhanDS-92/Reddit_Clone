@@ -544,6 +544,7 @@ The SubReddit Page Start
 }
 
 #h1TheSubReddit {
+  cursor: pointer;
   display: flex;
   align-items: center;
   width: 100%;
@@ -838,6 +839,11 @@ Display Post and its Comments Section Page Start
   align-items: center;
   gap: 20px;
 }
+
+#display-posts-comments-h1 {
+  width: 100%;
+}
+
 
 /* 
 *************************************************************
@@ -1267,7 +1273,6 @@ Replies Component - Start
 ************************************************************* 
 */
 
-
 .replies {
   padding-left: 28px;
   width: 100%;
@@ -1296,11 +1301,139 @@ Replies Component - Start
   background-color: #DAE0E6;
 }
 
+/* 
+*************************************************************
+Replies Component - End
+************************************************************* 
+*/
+
+/* 
+*************************************************************
+Home Component - Start
+************************************************************* 
+*/
+
+#homeSection {
+  margin-top: -60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#homeSection h1 {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+#welcome-user {
+  margin-left: 10px;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #FF4500;
+  color: white;
+}
+
+#goToLoginRegister {
+  display: flex;
+  gap: 10px;
+}
+
+.hyperlink {
+  text-decoration: underline;
+  color: blue;
+}
+
+.hyperlink:active,
+.hyperlink:focus {
+  color: purple;
+}
+
+#userPosts {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.homePosts {
+  width: max-content;
+  height: max-content;
+  min-width: 100px;
+  min-height: 100px;
+  padding: 10px;
+  background-color: white;
+  transition: 100ms ease-in-out;
+}
+
+.homePosts:hover,
+.homePosts:focus {
+  outline: 2px solid black;
+  box-shadow: 0 0 5px black;
+}
+
+.homePosts h4 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#homeIcon {
+  color: #FF4500;
+}
+
+#userSubreddits {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.homeBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: -15px;
+}
+
+#home-create-post {
+  border: none;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 99999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+}
+
+#home-create-post:hover,
+#home-create-post:focus {
+  outline: none;
+  box-shadow: 0 0 10px black;
+}
 
 
 /* 
 *************************************************************
-Replies Component - End
+Carousel Component - End
 ************************************************************* 
 */
 /* 

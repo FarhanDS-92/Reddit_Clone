@@ -33,10 +33,14 @@ export default function CreateSubreddit({ checkUser }) {
     if (data.error) {
       return setError(data.error);
     }
+    setError("");
+    setSubRedditName("");
+    setShowButton(true);
     router.refresh();
   }
 
   function handleCancelClick() {
+    setError("");
     setShowButton(true);
   }
 

@@ -3,6 +3,7 @@ import DisplayMainPost from "@/components/DisplayMainPost.jsx";
 import FirstTierComments from "@/components/FirstTierComments.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
 import { prisma } from "@/lib/prisma.js";
+import Link from "next/link.js";
 import { FaReddit } from "react-icons/fa";
 
 export default async function postWithComments({ params }) {
@@ -51,11 +52,17 @@ export default async function postWithComments({ params }) {
   }
 
   return (
-    <section id="display-posts-comments-section">
-      <h1 id="h1TheSubReddit">
-        <FaReddit id="h1SubredditIcon" />
-        r/ {subreddit.name}
-      </h1>
+    <section
+      id="display-posts-comments-section"
+      aria-label={`The post and its replies`}
+      role="region"
+    >
+      <Link href={`/subreddits/${subredditId}`} id="display-posts-comments-h1">
+        <h1 id="h1TheSubReddit">
+          <FaReddit id="h1SubredditIcon" />
+          r/ {subreddit.name}
+        </h1>
+      </Link>
 
       <DisplayMainPost
         post={mainPost}
