@@ -14,12 +14,29 @@ export default function RootLayout({ children }) {
 
         <footer>
           <h2>Created By: Farhan D. Siddiqi</h2>
-          <p>
-            Web Portfolio{" "}
-            <a href="https://farhandev.ca/" target="blank_" id="footer-link">
-              here
-            </a>
-          </p>
+          <div id="external-links">
+            <p>
+              Web Portfolio:
+              <a href="https://farhandev.ca/" target="blank_" id="footer-link">
+                here
+              </a>
+            </p>
+            <p>
+              LinkedIn:
+              <a
+                href="https://www.linkedin.com/in/farhan-d-siddiqi-web-developer/"
+                id="footer-link"
+              >
+                here
+              </a>
+            </p>
+            <p>
+              Github:
+              <a href="https://github.com/FarhanDS-92" id="footer-link">
+                here
+              </a>
+            </p>
+          </div>
         </footer>
       </body>
     </html>

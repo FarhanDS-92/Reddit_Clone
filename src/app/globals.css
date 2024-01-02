@@ -61,6 +61,7 @@ footer p {
 }
 
 #footer-link {
+  margin-left: 3px;
   text-decoration: underline;
   color: blue;
 }
@@ -68,6 +69,11 @@ footer p {
 #footer-link:focus,
 #footer-link:active {
   color: purple;
+}
+
+#external-links {
+  display: flex;
+  gap: 20px;
 }
 
 /* 
