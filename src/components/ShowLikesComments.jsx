@@ -3,7 +3,12 @@ import Link from "next/link.js";
 import { FaRegCommentAlt } from "react-icons/fa";
 import InteractiveLikes from "./InteractiveLikes.jsx";
 
-export default async function ShowLikesComments({ votes, post, user }) {
+export default async function ShowLikesComments({
+  votes,
+  post,
+  user,
+  subredditId,
+}) {
   let checkUser;
 
   if (user.id) {
@@ -39,7 +44,7 @@ export default async function ShowLikesComments({ votes, post, user }) {
           user={user}
           checkUser={checkUser}
         />
-        <Link href={`/posts/${post.id}`}>
+        <Link href={`/subreddits/${subredditId}/${post.id}`}>
           <div className="comments">
             <FaRegCommentAlt />
             <p>Comments</p>

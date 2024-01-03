@@ -38,16 +38,22 @@ export async function POST(request, response) {
     });
 
     if (searchVote) {
-      vote = await prisma.vote.update({
-        where: {
-          id: searchVote.id,
-          userId: id,
-          postId,
-        },
-        data: {
-          isUpvote: isUpvote,
-        },
-      });
+      if (searchVote.isUpvote === isUpvote) {
+        vote = await prisma.vote.delete({
+          where: {
+            id: searchVote.id,
+          },
+        });
+      } else {
+        vote = await prisma.vote.update({
+          where: {
+            id: searchVote.id,
+          },
+          data: {
+            isUpvote: isUpvote,
+          },
+        });
+      }
     } else {
       vote = await prisma.vote.create({
         data: {

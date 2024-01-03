@@ -61,7 +61,12 @@ export default async function chosenSubReddit({ params }) {
             </div>
           </Link>
 
-          <ShowLikesComments post={post} votes={votes} user={user} />
+          <ShowLikesComments
+            post={post}
+            votes={votes}
+            user={user}
+            subredditId={subredditId}
+          />
         </div>
       ))}
     </section>

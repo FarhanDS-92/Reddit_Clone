@@ -12,7 +12,6 @@ export default function InteractiveLikes({ votes, post, user, checkUser }) {
   const [isUpVote, setIsUpVote] = useState(null);
   const [voted, setVoted] = useState(null);
   const [error, setError] = useState("");
-  const [isClicked, setIsClicked] = useState(null);
 
   const router = useRouter();
 
@@ -25,35 +24,31 @@ export default function InteractiveLikes({ votes, post, user, checkUser }) {
 
   async function handlePlus() {
     if (user.id) {
-      if (!isUpVote) {
-        await fetch("/api/votes", {
-          method: "POST",
-          body: JSON.stringify({
-            postId: post.id,
-            isUpvote: true,
-          }),
-        });
+      await fetch("/api/votes", {
+        method: "POST",
+        body: JSON.stringify({
+          postId: post.id,
+          isUpvote: true,
+        }),
+      });
 
-        let x;
+      let x;
 
-        if (isClicked === null) {
-          if (voted === false) {
-            x = votes + 2;
-            setLikes(x);
-          } else if (voted === true) {
-          } else {
-            x = votes + 1;
-            setLikes(x);
-          }
-        } else if (isClicked === false) {
-          x = likes + 2;
-          setLikes(x);
-        }
-
-        setVoted(true);
-        setIsClicked(true);
-        setIsUpVote(true);
+      if (voted === true) {
+        x = likes - 1;
+        setLikes(x);
+        setVoted(null);
+        return setIsUpVote(null);
+      } else if (voted === false) {
+        x = likes + 2;
+        setLikes(x);
+      } else {
+        x = likes + 1;
+        setLikes(x);
       }
+
+      setVoted(true);
+      setIsUpVote(true);
     } else {
       setError("You need to login to Upvote!");
     }
@@ -61,35 +56,31 @@ export default function InteractiveLikes({ votes, post, user, checkUser }) {
 
   async function handleMinus() {
     if (user.id) {
-      if (isUpVote === null || isUpVote === true) {
-        await fetch("/api/votes", {
-          method: "POST",
-          body: JSON.stringify({
-            postId: post.id,
-            isUpvote: false,
-          }),
-        });
+      await fetch("/api/votes", {
+        method: "POST",
+        body: JSON.stringify({
+          postId: post.id,
+          isUpvote: false,
+        }),
+      });
 
-        let x;
+      let x;
 
-        if (isClicked === null) {
-          if (voted === true) {
-            x = votes - 2;
-            setLikes(x);
-          } else if (voted === false) {
-          } else {
-            x = votes - 1;
-            setLikes(x);
-          }
-        } else if (isClicked === true) {
-          x = likes - 2;
-          setLikes(x);
-        }
-
-        setVoted(false);
-        setIsClicked(false);
-        setIsUpVote(false);
+      if (voted === true) {
+        x = likes - 2;
+        setLikes(x);
+      } else if (voted === false) {
+        x = likes + 1;
+        setLikes(x);
+        setVoted(null);
+        return setIsUpVote(null);
+      } else {
+        x = likes - 1;
+        setLikes(x);
       }
+
+      setVoted(false);
+      setIsUpVote(false);
     } else {
       setError("You need to login to Down-vote!");
     }

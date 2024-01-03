@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
               LinkedIn:
               <a
                 href="https://www.linkedin.com/in/farhan-d-siddiqi-web-developer/"
+                target="blank_"
                 id="footer-link"
               >
                 here
@@ -32,7 +33,11 @@ export default function RootLayout({ children }) {
             </p>
             <p>
               Github:
-              <a href="https://github.com/FarhanDS-92" id="footer-link">
+              <a
+                href="https://github.com/FarhanDS-92"
+                target="blank_"
+                id="footer-link"
+              >
                 here
               </a>
             </p>
