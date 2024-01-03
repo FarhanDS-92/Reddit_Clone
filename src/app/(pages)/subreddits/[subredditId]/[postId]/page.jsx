@@ -9,37 +9,28 @@ import { FaReddit } from "react-icons/fa";
 export default async function postWithComments({ params }) {
   const { subredditId, postId } = params;
 
-  const user = await fetchUser();
   const votes = await prisma.vote.findMany();
+  const user = await fetchUser();
 
   const mainPost = await prisma.post.findFirst({
     where: {
       id: postId,
       parentId: null,
     },
-  });
-
-  const postOwner = await prisma.user.findFirst({
-    where: {
-      id: mainPost.userId,
+    include: {
+      user: true,
+      subreddit: true,
+      children: {
+        include: {
+          user: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
-  delete postOwner.password;
-
-  const subreddit = await prisma.subReddit.findFirst({
-    where: {
-      id: subredditId,
-    },
-  });
-
-  const comments = await prisma.post.findMany({
-    where: {
-      parentId: postId,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  delete mainPost.user.password;
 
   let checkUser;
   if (user.id) {
@@ -60,7 +51,7 @@ export default async function postWithComments({ params }) {
       <Link href={`/subreddits/${subredditId}`} id="display-posts-comments-h1">
         <h1 id="h1TheSubReddit">
           <FaReddit id="h1SubredditIcon" />
-          r/ {subreddit.name}
+          r/ {mainPost.subreddit.name}
         </h1>
       </Link>
 
@@ -68,9 +59,8 @@ export default async function postWithComments({ params }) {
         post={mainPost}
         user={user}
         votes={votes}
-        subreddit={subreddit}
+        subreddit={mainPost.subreddit}
         checkUser={checkUser}
-        postOwner={postOwner}
       />
 
       <div id="form-comments">
@@ -78,7 +68,7 @@ export default async function postWithComments({ params }) {
 
         <hr id="divider-comment" />
 
-        {comments.map((comment) => (
+        {mainPost.children.map((comment) => (
           <FirstTierComments
             key={comment.id}
             comment={comment}

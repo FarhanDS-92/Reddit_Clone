@@ -4,12 +4,6 @@ import { IoMdReturnRight } from "react-icons/io";
 import CommentContent from "./CommentContent.jsx";
 
 export default async function Replies({ reply, votes, user, subredditId }) {
-  const replyOwner = await prisma.user.findFirst({
-    where: {
-      id: reply.userId,
-    },
-  });
-
   let checkUser;
 
   if (user.id) {
@@ -25,6 +19,12 @@ export default async function Replies({ reply, votes, user, subredditId }) {
     where: {
       parentId: reply.id,
     },
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   return (
@@ -38,7 +38,7 @@ export default async function Replies({ reply, votes, user, subredditId }) {
           <div className="reply-content">
             <h5>
               <FaUserCircle className="comment-icon" />
-              {replyOwner.username}
+              {reply.user.username}
             </h5>
 
             <CommentContent

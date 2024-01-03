@@ -7,13 +7,13 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import InteractiveLikes from "./InteractiveLikes.jsx";
 import { useState } from "react";
 import { useRouter } from "next/navigation.js";
+import { getNumberOfVotes } from "@/lib/getNumberOfVotes.js";
 
 export default function DisplayMainPost({
   post,
   user,
   votes,
   checkUser,
-  postOwner,
   subreddit,
 }) {
   const [edit, setEdit] = useState(false);
@@ -22,19 +22,7 @@ export default function DisplayMainPost({
   const [error, setError] = useState("");
 
   const router = useRouter();
-
-  function getNumberOfVotes(postId) {
-    const votesForPost = votes.filter((vote) => vote.postId === postId);
-    let numberOfVotes = 0;
-    for (let i = 0; i < votesForPost.length; i++) {
-      if (votesForPost[i].isUpvote === true) {
-        numberOfVotes += 1;
-      } else if (votesForPost[i].isUpvote === false) {
-        numberOfVotes -= 1;
-      }
-    }
-    return numberOfVotes;
-  }
+  const getVotes = getNumberOfVotes(post.id, votes);
 
   function handleEdit() {
     if (!edit) {
@@ -75,7 +63,7 @@ export default function DisplayMainPost({
       <div>
         <h5>
           <FaUserCircle id="circleIcon" />
-          Posted by u/ {postOwner.username}
+          Posted by u/ {post.user.username}
         </h5>
         <div id="mainPostDetails">
           {!edit ? (
@@ -117,7 +105,7 @@ export default function DisplayMainPost({
       <div id="main-btns">
         <div id="mainPost-Likes-Comments">
           <InteractiveLikes
-            votes={getNumberOfVotes(post.id)}
+            votes={getVotes}
             post={post}
             user={user}
             checkUser={checkUser}
@@ -129,7 +117,7 @@ export default function DisplayMainPost({
           </div>
         </div>
 
-        {user.id === postOwner.id ? (
+        {user.id === post.user.id ? (
           <div id="mainPost-delete-edit-container">
             <button onClick={handleEdit}>
               <CiEdit />

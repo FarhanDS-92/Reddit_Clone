@@ -6,6 +6,7 @@ import { CiEdit } from "react-icons/ci";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useRouter } from "next/navigation.js";
+import { getNumberOfVotes } from "@/lib/getNumberOfVotes.js";
 
 export default function CommentContent({
   post,
@@ -86,18 +87,7 @@ export default function CommentContent({
     router.refresh();
   }
 
-  function getNumberOfVotes(postId) {
-    const votesForPost = votes.filter((vote) => vote.postId === postId);
-    let numberOfVotes = 0;
-    for (let i = 0; i < votesForPost.length; i++) {
-      if (votesForPost[i].isUpvote === true) {
-        numberOfVotes += 1;
-      } else if (votesForPost[i].isUpvote === false) {
-        numberOfVotes -= 1;
-      }
-    }
-    return numberOfVotes;
-  }
+  const getVotes = getNumberOfVotes(post.id, votes);
 
   return (
     <div className="comment-content">
@@ -125,7 +115,7 @@ export default function CommentContent({
 
         <div className="interactive-btns">
           <InteractiveLikes
-            votes={getNumberOfVotes(post.id)}
+            votes={getVotes}
             post={post}
             user={user}
             checkUser={checkUser}

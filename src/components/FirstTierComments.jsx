@@ -11,15 +11,15 @@ export default async function FirstTierComments({
 }) {
   let checkUser;
 
-  const commentOwner = await prisma.user.findFirst({
-    where: {
-      id: comment.userId,
-    },
-  });
-
   const replies = await prisma.post.findMany({
     where: {
       parentId: comment.id,
+    },
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 
@@ -36,7 +36,7 @@ export default async function FirstTierComments({
     <div className="comment-reply">
       <h5>
         <FaUserCircle className="comment-icon" />
-        {commentOwner.username}
+        {comment.user.username}
       </h5>
 
       <CommentContent

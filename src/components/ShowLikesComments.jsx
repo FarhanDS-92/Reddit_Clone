@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
 import { FaRegCommentAlt } from "react-icons/fa";
 import InteractiveLikes from "./InteractiveLikes.jsx";
+import { getNumberOfVotes } from "@/lib/getNumberOfVotes.js";
 
 export default async function ShowLikesComments({
   votes,
@@ -20,26 +21,13 @@ export default async function ShowLikesComments({
     });
   }
 
-  function getNumberOfVotes(postId) {
-    const votesForPost = votes.filter((vote) => vote.postId === postId);
-    let numberOfVotes = 0;
-
-    for (let i = 0; i < votesForPost.length; i++) {
-      if (votesForPost[i].isUpvote === true) {
-        numberOfVotes += 1;
-      } else if (votesForPost[i].isUpvote === false) {
-        numberOfVotes -= 1;
-      }
-    }
-
-    return numberOfVotes;
-  }
+  const getVotes = getNumberOfVotes(post.id, votes);
 
   return (
     <>
       <div className="likesComments">
         <InteractiveLikes
-          votes={getNumberOfVotes(post.id)}
+          votes={getVotes}
           post={post}
           user={user}
           checkUser={checkUser}

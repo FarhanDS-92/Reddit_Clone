@@ -7,7 +7,6 @@ import { FaUserCircle } from "react-icons/fa";
 
 export default async function chosenSubReddit({ params }) {
   const { subredditId } = params;
-  const users = await prisma.user.findMany();
   const votes = await prisma.vote.findMany();
   const user = await fetchUser();
 
@@ -22,15 +21,13 @@ export default async function chosenSubReddit({ params }) {
       subredditId: subredditId,
       parentId: null,
     },
+    include: {
+      user: true,
+    },
     orderBy: {
       createdAt: "desc",
     },
   });
-
-  function getUserName(userId) {
-    const postUser = users.filter((user) => user.id === userId);
-    return postUser[0].username;
-  }
 
   return (
     <section
@@ -54,7 +51,7 @@ export default async function chosenSubReddit({ params }) {
             <div className="postContent">
               <h5>
                 <FaUserCircle id="circleIcon" /> Posted by u/
-                {getUserName(post.userId)}
+                {post.user.username}
               </h5>
               <h2>{post.title}</h2>
               <p id="subRedditPostMessage">{post.message}</p>
