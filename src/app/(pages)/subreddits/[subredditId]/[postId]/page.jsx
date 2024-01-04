@@ -2,6 +2,7 @@ import CreateComment from "@/components/CreateComment.jsx";
 import DisplayMainPost from "@/components/DisplayMainPost.jsx";
 import FirstTierComments from "@/components/FirstTierComments.jsx";
 import { fetchUser } from "@/lib/fetchUser.js";
+import { getNumberOfComments } from "@/lib/getNumberOfComments.js";
 import { prisma } from "@/lib/prisma.js";
 import Link from "next/link.js";
 import { FaReddit } from "react-icons/fa";
@@ -32,6 +33,8 @@ export default async function postWithComments({ params }) {
   });
   delete mainPost.user.password;
 
+  const getComments = await getNumberOfComments(postId);
+
   let checkUser;
   if (user.id) {
     checkUser = await prisma.vote.findFirst({
@@ -61,6 +64,7 @@ export default async function postWithComments({ params }) {
         votes={votes}
         subreddit={mainPost.subreddit}
         checkUser={checkUser}
+        getComments={getComments}
       />
 
       <div id="form-comments">

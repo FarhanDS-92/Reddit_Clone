@@ -15,6 +15,7 @@ export default function DisplayMainPost({
   votes,
   checkUser,
   subreddit,
+  getComments,
 }) {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(post.title);
@@ -113,6 +114,7 @@ export default function DisplayMainPost({
 
           <div id="mainPost-comments">
             <FaRegCommentAlt />
+            <p>{getComments}</p>
             <p>Comments</p>
           </div>
         </div>

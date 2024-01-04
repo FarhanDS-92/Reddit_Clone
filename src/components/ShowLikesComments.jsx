@@ -3,6 +3,7 @@ import Link from "next/link.js";
 import { FaRegCommentAlt } from "react-icons/fa";
 import InteractiveLikes from "./InteractiveLikes.jsx";
 import { getNumberOfVotes } from "@/lib/getNumberOfVotes.js";
+import { getNumberOfComments } from "@/lib/getNumberOfComments.js";
 
 export default async function ShowLikesComments({
   votes,
@@ -22,6 +23,7 @@ export default async function ShowLikesComments({
   }
 
   const getVotes = getNumberOfVotes(post.id, votes);
+  const getComments = getNumberOfComments(post.id);
 
   return (
     <>
@@ -35,6 +37,7 @@ export default async function ShowLikesComments({
         <Link href={`/subreddits/${subredditId}/${post.id}`}>
           <div className="comments">
             <FaRegCommentAlt />
+            <p>{getComments}</p>
             <p>Comments</p>
           </div>
         </Link>
