@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <section className="loading">
-      <span class="loaderLink"></span>
+      <span className="loaderLink"></span>
     </section>
   );
 }
