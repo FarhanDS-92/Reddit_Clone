@@ -39,13 +39,15 @@ export default async function FirstTierComments({
         {comment.user.username}
       </h5>
 
-      <CommentContent
-        user={user}
-        votes={votes}
-        post={comment}
-        checkUser={checkUser}
-        subredditId={subredditId}
-      />
+      <div className="thread-line-first-tier">
+        <CommentContent
+          user={user}
+          votes={votes}
+          post={comment}
+          checkUser={checkUser}
+          subredditId={subredditId}
+        />
+      </div>
 
       {replies.map((reply) => (
         <Replies

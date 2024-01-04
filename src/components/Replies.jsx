@@ -30,27 +30,19 @@ export default async function Replies({ reply, votes, user, subredditId }) {
   return (
     <>
       <div className="replies">
+        <h5>
+          <FaUserCircle className="comment-icon" />
+          {reply.user.username}
+        </h5>
         <div className="replies-container">
-          <div className="return">
-            <IoMdReturnRight />
-          </div>
-
-          <div className="reply-content">
-            <h5>
-              <FaUserCircle className="comment-icon" />
-              {reply.user.username}
-            </h5>
-
-            <CommentContent
-              user={user}
-              votes={votes}
-              post={reply}
-              checkUser={checkUser}
-              subredditId={subredditId}
-            />
-          </div>
+          <CommentContent
+            user={user}
+            votes={votes}
+            post={reply}
+            checkUser={checkUser}
+            subredditId={subredditId}
+          />
         </div>
-        <hr />
 
         {replies[0] ? (
           <>

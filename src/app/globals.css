@@ -1135,10 +1135,9 @@ Display Main Post - Section -- Create Comment -- Page End
 }
 
 .comment-reply {
-  margin: 0 0;
   margin-bottom: 20px;
   width: 100%;
-  padding-left: 10px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -1151,6 +1150,10 @@ Display Main Post - Section -- Create Comment -- Page End
   gap: 5px;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.thread-line-first-tier {
+  border-left: 2px solid #DAE0E6;
 }
 
 .comment-icon {
@@ -1332,18 +1335,20 @@ Replies Component - Start
 */
 
 .replies {
+  border-left: 2px solid #DAE0E6;
   padding-left: 28px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .replies-container {
+  border-left: 2px solid #DAE0E6;
   width: 95%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 
