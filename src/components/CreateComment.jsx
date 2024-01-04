@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function CreateComment({ post, user, subredditId }) {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, SetIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -16,7 +17,7 @@ export default function CreateComment({ post, user, subredditId }) {
       return setError("You need to login to comment!");
     }
 
-    console.log(subredditId);
+    SetIsLoading(true);
 
     if (text) {
       const res = await fetch("/api/posts", {
@@ -30,9 +31,11 @@ export default function CreateComment({ post, user, subredditId }) {
       const data = await res.json();
 
       if (data.error) {
+        SetIsLoading(false);
         return setError(data.error);
       }
 
+      SetIsLoading(false);
       setText("");
       router.refresh();
     } else {
@@ -42,35 +45,41 @@ export default function CreateComment({ post, user, subredditId }) {
 
   return (
     <form id="create-comment-container" onSubmit={handleSubmit}>
-      <div id="create-comment-text-container">
-        <p>
-          Comment as
-          <Link href={"/"} id="create-comment-user-link">
-            {user.username}
-          </Link>
-        </p>
-        <textarea
-          id="create-comment-text"
-          placeholder="comment here..."
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        ></textarea>
-      </div>
-      <div id="create-comment-button-container">
-        <p id="create-comment-error">{error}</p>
-        <button
-          type="submit"
-          style={{
-            color: text ? "white" : "black",
-            backgroundColor: text ? "green" : "gray",
-            cursor: text ? "pointer" : "not-allowed",
-          }}
-        >
-          Comment
-        </button>
-      </div>
+      {isLoading ? (
+        <span class="loader"></span>
+      ) : (
+        <>
+          <div id="create-comment-text-container">
+            <p>
+              Comment as
+              <Link href={"/"} id="create-comment-user-link">
+                {user.username}
+              </Link>
+            </p>
+            <textarea
+              id="create-comment-text"
+              placeholder="comment here..."
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            ></textarea>
+          </div>
+          <div id="create-comment-button-container">
+            <p id="create-comment-error">{error}</p>
+            <button
+              type="submit"
+              style={{
+                color: text ? "white" : "black",
+                backgroundColor: text ? "green" : "gray",
+                cursor: text ? "pointer" : "not-allowed",
+              }}
+            >
+              Comment
+            </button>
+          </div>
+        </>
+      )}
     </form>
   );
 }
